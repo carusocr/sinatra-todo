@@ -35,15 +35,15 @@ __END__
 %html{:lang => "en"}
   %head
     %meta{:charset => "utf8"}
-      %title= @title + ' | Recall'
+      %title= @title + ' | Recall '
       %link{:href => "/reset.css", :rel => "stylesheet"}
         %link{:href => "/style.css", :rel => "stylesheet"}
   %body
     %header
       %hgroup
         %h1
-          %a{:href => "/"} Recall
-        %h2 'cause you're too busy to remember
+          %a{:href => "/"} Remember This Shit!
+        %h2 to-do list
     #main
       = yield
     %footer
@@ -55,10 +55,8 @@ __END__
     %input{:type => "submit", :value => "Take Note!"}
 - @notes.each do |note|
   <article #{'class="complete"' if note.complete}>
-  %p
-    = note.content
-    %span
-      %a{:href => "/#{note.id}"} [edit]
+  = note.content
+  %a{:href => "/#{note.id}"} [edit]
   %p.links
     %a{:href => "/#{note.id}/complete"} ↯
   %p.meta
