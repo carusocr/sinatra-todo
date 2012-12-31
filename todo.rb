@@ -30,6 +30,12 @@ post '/' do
 	n.save
 	redirect '/'
 end
+
+get '/:id' do
+	@note = Note.get params[:id]
+	@title = "Edit note ##{params[:id]}"
+	haml :edit
+end
 __END__
 @@ layout
 %html{:lang => "en"}
@@ -61,3 +67,14 @@ __END__
     %a{:href => "/#{note.id}/complete"} ↯
   %p.meta
     Created: #{note.created_at}
+@@ edit
+- if @note
+	%form#edit{:action => "/#{@note.id}", :method => "post"}
+		%input{:name => "_method", :type => "hidden", :value => "put"}
+			%textarea{:name => "content"}= @note.content
+			<input type ="checkbox" name="complete" #{"checked" if @note.complete}>
+			%input{:type => "submit"}
+	%p
+		%a{:href => "/#{@note.id}/delete"} Delete
+- else
+	%p Note not found!
