@@ -42,8 +42,8 @@ __END__
     %header
       %hgroup
         %h1
-          %a{:href => "/"} Recall
-        %h2 'cause you're too busy to remember
+          %a{:href => "/"} To-Do
+        %h2 remember this stuff!
     #main
       = yield
     %footer
