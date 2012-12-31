@@ -42,8 +42,8 @@ __END__
     %header
       %hgroup
         %h1
-          %a{:href => "/"} Remember This Shit!
-        %h2 to-do list
+          %a{:href => "/"} To-Do
+        %h2 remember this stuff!
     #main
       = yield
     %footer
