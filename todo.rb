@@ -36,6 +36,22 @@ get '/:id' do
 	@title = "Edit note ##{params[:id]}"
 	haml :edit
 end
+
+put '/:id' do
+	n = Note.get params[:id]
+	n.content = params[:content]
+	n.complete = params[:complete] ? 1 : 0
+	n.updated_at = Time.now
+	n.save
+	redirect '/'
+end
+
+get ':id/delete' do
+	@note = Note.get params[:id]
+	@title = "Delete note ##{params[:id]}"
+	haml :delete
+end
+
 __END__
 @@ layout
 %html{:lang => "en"}
