@@ -46,10 +46,24 @@ put '/:id' do
 	redirect '/'
 end
 
-get ':id/delete' do
+get '/:id/delete' do
 	@note = Note.get params[:id]
 	@title = "Delete note ##{params[:id]}"
 	haml :delete
+end
+
+get '/:id/complete' do
+	n = Note.get params[:id]
+	n.complete = n.complete ? 0 : 1 # flip it
+	n.updated_at = Time.now
+	n.save
+	redirect '/'
+end
+
+delete '/:id' do
+	n = Note.get params[:id]
+	n.destroy
+	redirect '/'
 end
 
 __END__
@@ -94,3 +108,12 @@ __END__
 		%a{:href => "/#{@note.id}/delete"} Delete
 - else
 	%p Note not found!
+@@ delete
+- if @note
+	%p Are you sure you want to delete note #{@note.id}?
+	%form{:action => "/#{@note.id}", :method => "post"}
+		%input{:name => "_method", :type => "hidden", :value => "delete"}
+		%input{:type => "submit", :value => "Junk it!"}
+			%a{:href => "/#{@note.id}"} Cancel
+- else
+	%p Note not found.
