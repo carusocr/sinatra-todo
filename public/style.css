@@ -26,7 +26,7 @@ header h2 {
 	margin: 0 0 20px;
 }
 #add textarea {
-	height: 30px;
+	height: 50px;
 	width: 510px;
 	padding: 10px;
 	border: 1px solid #ddd;
@@ -39,7 +39,7 @@ header h2 {
 	background: white;
 }
 #edit textarea {
-	height: 30px;
+	height: 50px;
 	width: 480px;
 	padding: 10px;
 	border: 1px solid #ddd;

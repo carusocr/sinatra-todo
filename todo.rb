@@ -2,6 +2,7 @@
 
 require 'sinatra'
 require 'data_mapper'
+require 'haml'
 
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/recall.db")
 
@@ -67,53 +68,3 @@ delete '/:id' do
 end
 
 __END__
-@@ layout
-%html{:lang => "en"}
-  %head
-    %meta{:charset => "utf8"}
-      %title= @title + ' | Recall '
-      %link{:href => "/reset.css", :rel => "stylesheet"}
-        %link{:href => "/style.css", :rel => "stylesheet"}
-  %body
-    %header
-      %hgroup
-        %h1
-          %a{:href => "/"} To-Do
-        %h2 remember this stuff!
-    #main
-      = yield
-    %footer
-      %p
-@@ home
-%section#add
-  %form{:action => "/", :method => "post"}
-    %textarea{:name => "content", :placeholder => "Your note…"}
-    %input{:type => "submit", :value => "Take Note!"}
-- @notes.each do |note|
-  <article #{'class="complete"' if note.complete}>
-  = note.content
-  %a{:href => "/#{note.id}"} [edit]
-  %p.links
-    %a{:href => "/#{note.id}/complete"} ↯
-  %p.meta
-    Created: #{note.created_at}
-@@ edit
-- if @note
-	%form#edit{:action => "/#{@note.id}", :method => "post"}
-		%input{:name => "_method", :type => "hidden", :value => "put"}
-			%textarea{:name => "content"}= @note.content
-			<input type ="checkbox" name="complete" #{"checked" if @note.complete}>
-			%input{:type => "submit"}
-	%p
-		%a{:href => "/#{@note.id}/delete"} Delete
-- else
-	%p Note not found!
-@@ delete
-- if @note
-	%p Are you sure you want to delete note #{@note.id}?
-	%form{:action => "/#{@note.id}", :method => "post"}
-		%input{:name => "_method", :type => "hidden", :value => "delete"}
-		%input{:type => "submit", :value => "Junk it!"}
-			%a{:href => "/#{@note.id}"} Cancel
-- else
-	%p Note not found.
