@@ -66,5 +66,3 @@ delete '/:id' do
 	n.destroy
 	redirect '/'
 end
-
-__END__
