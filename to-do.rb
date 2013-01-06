@@ -94,8 +94,11 @@ __END__
   <article #{'class="complete"' if note.complete}>
   = note.content
   %a{:href => "/#{note.id}"} [edit]
+  %a{:href => "/#{note.id}/complete"} [ ↯ ]
+  %a{:href => "/#{note.id}/delete"} [junk]
   %p.links
     %a{:href => "/#{note.id}/complete"} ↯
+    %a{:href => "/#{note.id}/delete"} x
   %p.meta
     Created: #{note.created_at}
 @@ edit
