@@ -4,7 +4,7 @@
 		%input{:type => "submit", :value => "Take Note!"}
 - @notes.each do |note|
 	<article #{'class="complete"' if note.complete}>
-	= note.content
+	= note.content 
 	%a{:href => "/#{note.id}"} [edit]
 	%a{:href => "/#{note.id}/complete"} ↯
 	%p.meta
