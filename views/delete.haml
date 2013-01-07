@@ -1,0 +1,8 @@
+- if @note
+	%p Are you sure you want to delete note #{@note.id}?
+	%form{:action => "/#{@note.id}", :method => "post"}
+		%input{:name => "_method", :type => "hidden", :value => "delete"}
+		%input{:type => "submit", :value => "Junk it!"}
+			%a{:href => "/#{@note.id}"} Cancel
+- else
+	%p Note not found. How the hell did you get here?!?

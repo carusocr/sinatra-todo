@@ -1,0 +1,16 @@
+%html
+	%head
+		%meta{:charset => "utf8"}
+			%title= @title + ' | Recall '
+			%link{:href => "/reset.css", :rel => "stylesheet"}
+				%link{:href => "style.css", :rel => "stylesheet"}
+	%body
+		%header
+			%hgroup
+				%h1
+					%a{:href => "/"} To-Do
+				%h2 Task List
+		#main
+			= yield
+		%footer
+			%p
