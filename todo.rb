@@ -1,4 +1,15 @@
 #!/usr/bin/env ruby
+#Ruby to-do list.
+# Author : Chris Caruso
+
+# Future features:
+# 1. Add duration and comments section to database.
+# 2. Add additional coloring/status for tasks that are overdue or weren't done.
+# 3. Display only current day in list, with ability to view previous days as well. Future too?
+# 4. Clean up formatting.
+# 5. Add some sort of show/hide comments in home display.
+# 6. Ability to note amount of time spent on each task if desired...pomodoro count?
+# 7. Rating of quality of task performance?
 
 require 'sinatra'
 require 'data_mapper'
