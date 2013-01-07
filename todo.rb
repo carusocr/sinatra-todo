@@ -4,6 +4,7 @@ require 'sinatra'
 require 'data_mapper'
 require 'haml'
 
+#database setup
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/recall.db")
 
 class Note
