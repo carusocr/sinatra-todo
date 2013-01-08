@@ -1,5 +1,5 @@
 body {
-	margin: 35px auto;
+	margin: 15px auto;
 	width: 640px;
 }
 header {
@@ -20,23 +20,24 @@ header h2 {
 	color: #999;
 }
 #main {
-	margin: 0 0 20px;
+	margin: 0 0 10px;
 }
 #add {
 	margin: 0 0 20px;
 }
 #add textarea {
-	height: 50px;
+	height: 40px;
 	width: 510px;
 	padding: 10px;
 	border: 1px solid #ddd;
+	background: #ddd;
 }
 #add input {
-	height: 50px;
+	height: 30px;
 	width: 100px;
 	margin: -50px 0 0;
 	border: 1px solid #ddd;
-	background: white;
+	background: #bbb;
 }
 #edit textarea {
 	height: 50px;
