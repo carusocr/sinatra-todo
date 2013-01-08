@@ -10,6 +10,7 @@
 # 5. Add some sort of show/hide comments in home display.
 # 6. Ability to note amount of time spent on each task if desired...pomodoro count?
 # 7. Rating of quality of task performance?
+# 8. Add ability to shift position of items in list
 
 require 'sinatra'
 require 'data_mapper'
