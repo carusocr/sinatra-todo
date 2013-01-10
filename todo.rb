@@ -23,10 +23,14 @@ class Note
 	include DataMapper::Resource
 	property :id, Serial
 	property :content, Text, :required=>true
-	property :complete, Boolean, :required=>true, :default=>false
+	property :status, Enum[ :new, :done, :slack], :default=> :new
 	property :created_at, DateTime
 	property :updated_at, DateTime
 end
+
+def flip_status
+end
+	
 
 DataMapper.finalize.auto_upgrade!
 
@@ -54,7 +58,7 @@ end
 put '/:id' do
 	n = Note.get params[:id]
 	n.content = params[:content]
-	n.complete = params[:complete] ? 1 : 0
+	n.status = params[:status] ? :done : :new
 	n.updated_at = Time.now
 	n.save
 	redirect '/'
@@ -68,7 +72,21 @@ end
 
 get '/:id/complete' do
 	n = Note.get params[:id]
-	n.complete = n.complete ? 0 : 1 # flip it
+	if n.status == :new || n.status == :slack
+		n.status = :done
+	elsif n.status == :done
+		n.status = :new
+	end
+	#n.status = n.status ? :new : :done # flip it
+	n.updated_at = Time.now
+	n.save
+	redirect '/'
+end
+
+get '/:id/slack' do
+	n = Note.get params[:id]
+	#n.status = n.status ? :new : :slack # flip it
+	n.status = :slack
 	n.updated_at = Time.now
 	n.save
 	redirect '/'

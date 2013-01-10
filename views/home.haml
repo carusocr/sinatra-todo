@@ -3,9 +3,14 @@
 		%textarea{:name => "content", :placeholder => "Your note..."}
 		%input{:type => "submit", :value => "Take Note!"}
 - @notes.each do |note|
-	<article #{'class="complete"' if note.complete}>
+	- if note.status == :slack
+		<article #{'class="slack"'}>
+	-else 
+		<article #{'class="complete"' if note.status == :done}>
 	= note.content
+	= note.status
 	%a{:href => "/#{note.id}"} [edit]
+	%a{:href => "/#{note.id}/slack"} [slacked]
 	%a{:href => "/#{note.id}/complete"} ↯
 	%p.meta
 		Created: #{note.created_at}

@@ -2,7 +2,7 @@
 	%form#edit{:action => "/#{@note.id}", :method => "post"}
 		%input{:name => "_method", :type => "hidden", :value => "put"}
 			%textarea{:name => "content"}= @note.content
-			<input type = "checkbox" name = "complete" #{"checked" if @note.complete}>
+			<input type = "checkbox" name = "complete" #{"checked" if @note.status == :done}>
 			%input{:type => "submit"}
 	%p
 		%a{:href => "/#{@note.id}/delete"} Delete

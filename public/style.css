@@ -70,6 +70,9 @@ article:nth-child(even) {
 article.complete {
 	background: #00baba;
 }
+article.slack {
+	background: #a46464;
+}
 article span {
 	font-size: 0.8em;
 }
@@ -79,7 +82,7 @@ p {
 .meta {
 	font-size: 0.8em;
 	font-style: italic;
-	color: #888;
+	color: #CCC;
 }
 .links {
 	font-size: 1.8em;
