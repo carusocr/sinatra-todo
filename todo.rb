@@ -15,6 +15,7 @@
 require 'sinatra'
 require 'data_mapper'
 require 'haml'
+require 'active_support/all'
 
 #database setup
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/recall.db")
@@ -77,7 +78,6 @@ get '/:id/complete' do
 	elsif n.status == :done
 		n.status = :new
 	end
-	#n.status = n.status ? :new : :done # flip it
 	n.updated_at = Time.now
 	n.save
 	redirect '/'

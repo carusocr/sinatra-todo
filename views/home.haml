@@ -7,6 +7,9 @@
 		<article #{'class="slack"'}>
 	-else 
 		<article #{'class="complete"' if note.status == :done}>
+	- yesterday = Time.now - 1.day
+	= yesterday
+	%br
 	= note.content
 	= note.status
 	%a{:href => "/#{note.id}"} [edit]
