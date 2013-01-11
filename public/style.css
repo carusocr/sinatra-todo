@@ -94,3 +94,12 @@ p {
 	display: block;
 	text-decoration: none;
 }
+#note_input {
+	position: absolute;
+		top: 150;
+		right: 320px;
+}
+input.junk {
+	height: 22px;
+	width: 60px;
+}

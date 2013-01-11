@@ -9,7 +9,7 @@
 			%hgroup
 				%h1
 					%a{:href => "/"} crc
-				%h2 Task List
+				%h2= "Task List For " + Date.today.to_s
 		#main
 			= yield
 		%footer

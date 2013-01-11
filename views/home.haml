@@ -1,7 +1,7 @@
 %section#add
 	%form{:action => "/", :method => "post"}
 		%textarea{:name => "content", :placeholder => "Your note..."}
-		%input{:type => "submit", :value => "Take Note!"}
+		%input{:type => "submit", :value => "Take Note!", :id => "note_input"}
 - @notes.each do |note|
 	- if note.status == :slack
 		<article #{'class="slack"'}>
@@ -19,5 +19,5 @@
 		Created: #{note.created_at}
 	%form{:align => "right", :action => "/#{note.id}", :method => "post"}
 		%input{:name => "_method", :type => "hidden", :value => "delete"}
-		%input{:align => "right", :type => "submit", :value => "Junk it!"}
+		%input{:align => "right", :type => "submit", :value => "Junk it!", :class => "junk"}
 	</article>
