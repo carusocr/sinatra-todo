@@ -3,21 +3,11 @@
 		%textarea{:name => "content", :placeholder => "Your note..."}
 		%input{:type => "submit", :value => "Take Note!", :id => "note_input"}
 - @notes.each do |note|
-	- if note.status == :slack
-		<article #{'class="slack"'}>
-	-else 
-		<article #{'class="complete"' if note.status == :done}>
-	- yesterday = Time.now - 1.day
-	= yesterday
-	%br
-	= note.content
-	= note.status
-	%a{:href => "/#{note.id}"} [edit]
-	%a{:href => "/#{note.id}/slack"} [slacked]
-	%a{:href => "/#{note.id}/complete"} ↯
-	%p.meta
-		Created: #{note.created_at}
-	%form{:align => "right", :action => "/#{note.id}", :method => "post"}
-		%input{:name => "_method", :type => "hidden", :value => "delete"}
-		%input{:align => "right", :type => "submit", :value => "Junk it!", :class => "junk"}
-	</article>
+	- note.status = :ohshit if note.created_at < Date.today && note.status == :new
+	%article{:class => "#{note.status}"}
+		= note.content
+		%p.icons
+			%a{:href => "/#{note.id}/complete"} ↯
+			%a{:href => "/#{note.id}"} &#9998
+			%a{:href => "/#{note.id}/slack"} &#8619
+			%a.right.meta{:href => "/#{note.id}/delete"} &#9762

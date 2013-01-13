@@ -23,7 +23,7 @@ header h2 {
 	margin: 0 0 10px;
 }
 #add {
-	margin: 0 0 20px;
+	margin: 0 0 10px;
 }
 #add textarea {
 	height: 40px;
@@ -59,7 +59,7 @@ header h2 {
 article {
 	border: 1px solid #eee;
 	border-top: none;
-	padding: 15px 10px;
+	padding: 5px 10px;
 }
 article:first-of-type {
 	border: 1px solid #eee;
@@ -67,11 +67,14 @@ article:first-of-type {
 article:nth-child(even) {
 	background: #fafafa;
 }
-article.complete {
+article.done {
 	background: #00baba;
 }
 article.slack {
 	background: #a46464;
+}
+article.ohshit {
+	background: #EEDD82;
 }
 article span {
 	font-size: 0.8em;
@@ -79,8 +82,12 @@ article span {
 p {
 	margin: 0 0 5px;
 }
+.icons {
+	font-size: 1.2em;
+	color: #222;
+}
 .meta {
-	font-size: 0.8em;
+	font-size: 1.2em;
 	font-style: italic;
 	color: #CCC;
 }
@@ -99,7 +106,9 @@ p {
 		top: 150;
 		right: 320px;
 }
-input.junk {
-	height: 22px;
-	width: 60px;
-}
+.right {
+	float: right;
+}	
+.left {
+	float: left;
+}	
