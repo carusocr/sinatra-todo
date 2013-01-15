@@ -30,6 +30,7 @@ class Note
 	property :status, Enum[ :new, :done, :slack, :ohshit], :default=> :new
 	property :created_at, Date
 	property :updated_at, DateTime
+	property :pomodoros, Integer, :default => 0
 end
 
 def flip_status(stat)
@@ -42,6 +43,11 @@ get '/' do
 	@notes = Note.all :order=>:id.desc
 	@title = 'All Notes'
 	haml :home, :locals => {:curday => curday}
+end
+
+get '/present' do
+	curday = Date.today
+	redirect '/'
 end
 
 get '/nextday' do
@@ -57,7 +63,6 @@ end
 post '/' do
 	n = Note.new
 	n.content = params[:content]
-	#n.created_at = Date.today
 	n.created_at = curday
 	n.updated_at = Time.now
 	n.save

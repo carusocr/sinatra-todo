@@ -11,8 +11,9 @@
 					%a{:href => "/"} crc
 				%h2= "Task List For " + curday.to_s
 				%h3
-					%a.left{:href => "/prevday"} &#8668
-					%a.right{:href => "/nextday"} &#8669
+					%a{:href => "/prevday"} &#8668
+					%a{:href => "/present"} &#9784
+					%a{:href => "/nextday"} &#8669
 		#main
 			= yield
 		%footer
