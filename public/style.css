@@ -69,13 +69,13 @@ article:nth-child(even) {
 	background: #fafafa;
 }
 article.done {
-	background: #00baba;
+	background: #009aaa;
 }
 article.slack {
-	background: #a46464;
+	background: #EEDD82;
 }
 article.ohshit {
-	background: #EEDD82;
+	background: #942454;
 }
 article span {
 	font-size: 0.8em;
