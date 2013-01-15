@@ -57,12 +57,13 @@ header h2 {
 	width: 20px;
 }
 article {
-	border: 1px solid #eee;
+	border: 1px solid #ccc;
 	border-top: none;
 	padding: 5px 10px;
+	background: #EEE;
 }
 article:first-of-type {
-	border: 1px solid #eee;
+	border: 1px solid #ccc;
 }
 article:nth-child(even) {
 	background: #fafafa;
@@ -102,9 +103,7 @@ p {
 	text-decoration: none;
 }
 #note_input {
-	position: absolute;
-		top: 150;
-		right: 320px;
+	float: right;
 }
 .right {
 	float: right;
