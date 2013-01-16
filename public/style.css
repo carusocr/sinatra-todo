@@ -70,12 +70,14 @@ article:nth-child(even) {
 }
 article.done {
 	background: #009aaa;
+	color: #111;
 }
 article.slack {
 	background: #EEDD82;
 }
 article.ohshit {
 	background: #942454;
+	color: #EEDD82;
 }
 article span {
 	font-size: 0.8em;
@@ -89,8 +91,8 @@ p {
 }
 .meta {
 	font-size: 1.2em;
-	font-style: italic;
-	color: #CCC;
+	color: #AAA;
+	text-decoration: none;
 }
 .links {
 	font-size: 1.8em;
@@ -103,7 +105,7 @@ p {
 	text-decoration: none;
 }
 #note_input {
-	float: right;
+	vertical-align: bottom;
 }
 .right {
 	float: right;
@@ -113,4 +115,12 @@ p {
 }	
 .center {
 	float: center;
+}
+#note_entry {
+    border: solid 1px #777;
+    height: 18;
+    width: 250px;
+    color: #999;
+    padding-left: 5px;
+    vertical-align: bottom
 }

@@ -13,6 +13,9 @@
 # 8. Add ability to shift position of items in list
 # 9. Can't add new notes in the past, but can edit?
 
+# BUGS
+# Can enter to-do item on previous day and it will stay there, in white. Should go on current day.
+
 require 'sinatra'
 require 'data_mapper'
 require 'haml'
