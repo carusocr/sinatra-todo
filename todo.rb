@@ -6,7 +6,7 @@
 # DONE - 1. Display only current day in list, with ability to view previous days as well. Future too?
 # DONE - 2. Add additional coloring/status for tasks that are overdue or weren't done.
 # 3. Add duration and comments section to database.
-# 4. Clean up formatting.
+# DONE - 4. Clean up formatting.
 # 5. Add some sort of show/hide comments in home display.
 # 6. Ability to note amount of time spent on each task if desired...pomodoro count?
 # 7. Rating of quality of task performance?
@@ -15,6 +15,7 @@
 
 # BUGS
 # Can enter to-do item on previous day and it will stay there, in white. Should go on current day.
+# Related to item 9.
 
 require 'sinatra'
 require 'data_mapper'
