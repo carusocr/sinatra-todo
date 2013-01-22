@@ -11,11 +11,8 @@
 # 6. Ability to note amount of time spent on each task if desired...pomodoro count?
 # 7. Rating of quality of task performance?
 # 8. Add ability to shift position of items in list
-# 9. Can't add new notes in the past, but can edit?
-
-# BUGS
-# Can enter to-do item on previous day and it will stay there, in white. Should go on current day.
-# Related to item 9.
+# DONE - 9. Can't add new notes in the past, but can edit?
+# 10. Add online database functionality.
 
 require 'sinatra'
 require 'data_mapper'
