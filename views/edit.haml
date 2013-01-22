@@ -1,7 +1,10 @@
 - if @note
-	%form#edit{:action => "/#{@note.id}", :method => "post"}
+	%form#edit{:action => "/#{@note.id}/#{field}", :method => "post"}
 		%input{:name => "_method", :type => "hidden", :value => "put"}
-			%textarea{:name => "content"}= @note.content
+			- if field == 'content'
+				%textarea{:name => "#{field}"}= @note.content
+			- else
+				%textarea{:name => "#{field}"}= @note.comment
 			<input type = "checkbox" name = "complete" #{"checked" if @note.status == :done}>
 			%input{:type => "submit"}
 	%p
