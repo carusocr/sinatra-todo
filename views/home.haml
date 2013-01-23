@@ -28,10 +28,10 @@
 			%p.comment
 				= note.comment if !note.comment.nil? && (note.status == :done || note.status == :slack)
 			%p.icons
-				%a{:href => "/#{note.id}"} &#8681
-				- unless note.status == :slack
+				- unless note.status == :slack || note.status == :done
 					%a{:href => "/#{note.id}"} &#9998
-				%a{:href => "/#{note.id}/slack"} &#8621
+				- unless note.status == :done || note.status == :slack
+					%a{:href => "/#{note.id}/slack"} &#8621
 				%a{:href => "/#{note.id}/complete"} ↯
 				- if note.status == :done || note.status == :slack
 					%a{:href => "/#{note.id}/comment"} ...

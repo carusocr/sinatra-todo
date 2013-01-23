@@ -2,9 +2,9 @@
 	%form#edit{:action => "/#{@note.id}/#{field}", :method => "post"}
 		%input{:name => "_method", :type => "hidden", :value => "put"}
 			- if field == 'content'
-				%textarea{:name => "#{field}"}= @note.content
+				%textarea{:name => "#{field}", :cols => "60", :rows => "6", :autofocus => true}= @note.content
 			- else
-				%textarea{:name => "#{field}"}= @note.comment
-			%input{:type => "submit"}
+				%textarea{:name => "#{field}", :cols => "40", :rows => "4", :autofocus => true}= @note.comment
+			%input{:type => "submit", :value => "Update"}
 - else
 	%p Note not found!
