@@ -5,9 +5,6 @@
 				%textarea{:name => "#{field}"}= @note.content
 			- else
 				%textarea{:name => "#{field}"}= @note.comment
-			<input type = "checkbox" name = "complete" #{"checked" if @note.status == :done}>
 			%input{:type => "submit"}
-	%p
-		%a{:href => "/#{@note.id}/delete"} Delete
 - else
 	%p Note not found!

@@ -3,16 +3,25 @@
 # Author : Chris Caruso
 
 # Future features:
-# DONE - 1. Display only current day in list, with ability to view previous days as well. Future too?
-# DONE - 2. Add additional coloring/status for tasks that are overdue or weren't done.
 # 3. Add duration and comments section to database.
-# DONE - 4. Clean up formatting.
 # 5. Add some sort of show/hide comments in home display.
 # 6. Ability to note amount of time spent on each task if desired...pomodoro count?
 # 7. Rating of quality of task performance?
 # 8. Add ability to shift position of items in list
-# DONE - 9. Can't add new notes in the past, but can edit?
 # 10. Add online database functionality.
+
+# Additional behaviors: 
+#
+#	I have a habit of deleting an item instead of marking it slack. Maybe once an item is
+# marked slack, remove delete/edit?
+#
+#
+#
+#
+#
+#
+#
+#
 
 require 'sinatra'
 require 'data_mapper'
@@ -130,5 +139,6 @@ get '/:id/slack' do
 	n.status = :slack
 	n.updated_at = Time.now
 	n.save
-	redirect '/'
+	edit(:id, 'comment')
+	#redirect '/'
 end

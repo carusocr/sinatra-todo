@@ -10,12 +10,14 @@
 			= note.content
 			= note.created_at if note.status == :ohshit && $curday != note.created_at
 			%p.comment
-				= note.comment if !note.comment.nil? && note.status == :done
+				= note.comment if !note.comment.nil? && (note.status == :done || note.status == :slack)
 			%p.icons
 				%a{:href => "/#{note.id}"} &#8681
-				%a{:href => "/#{note.id}"} &#9998
+				- unless note.status == :slack
+					%a{:href => "/#{note.id}"} &#9998
 				%a{:href => "/#{note.id}/slack"} &#8621
 				%a{:href => "/#{note.id}/complete"} ↯
 				- if note.status == :done || note.status == :slack
 					%a{:href => "/#{note.id}/comment"} ...
-				%a.right.meta{:href => "/#{note.id}/delete"} &#9762
+				- unless note.status == :slack
+					%a.right.meta{:href => "/#{note.id}/delete"} &#9762
