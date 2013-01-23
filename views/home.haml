@@ -1,3 +1,19 @@
+%html
+	%head
+		%meta{:charset => "utf8"}
+			%title= @title + ' | Recall '
+			%link{:href => "/reset.css", :rel => "stylesheet"}
+				%link{:href => "style.css", :rel => "stylesheet"}
+	%body
+		%header
+			%hgroup
+				%h1
+					%a{:href => "/"} crc
+				%h2= "Task List For " + $curday.to_s
+				%h3
+					%a{:href => "/prevday"} &#8668
+					%a{:href => "/present"} &#9784
+					%a{:href => "/nextday"} &#8669
 - if Date.today <= $curday
 	%section#add
 		%form{:action => "/", :method => "post"}
