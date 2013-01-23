@@ -7,11 +7,10 @@ Ruby to-do list. That's it. Using it for practicing ruby, learning Sinatra + ham
 This todo list tracks my tasks for a given day, changing colors to display their current state.
 I'm looking to make a todo list that compensates for my laziness by nagging appropriately and preventing me from simply deleting undone tasks at the end of the day.
 
-White: uncompleted task
-Red: uncompleted task, automatically carried over from previous day.
-Aqua: completed task. A red task that is completed will vanish from the current day's display and show up in aqua on the day it was created.
-* add footnote listing completion date.
-Yellow: You didn't have the guts to finish this task and marked it 'slacked'. A slacked task cannot be deleted, as testament to procrastination.
+- White: uncompleted task.
+- Aqua: completed task.
+- Red: uncompleted task, automatically carried over from previous day. A red task that is completed will vanish from the current day's display and reappear in aqua on the day of creation, with a footnote listing completion date.
+- Yellow: You didn't have the guts to finish this task and marked it 'slacked'! A slacked task cannot be deleted, as testament to procrastination.
 
 There are a set of icons under each task, although task state determines which icons are 
 displayed:
