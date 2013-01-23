@@ -1,3 +1,4 @@
+%title= 'Editing ' + field.capitalize
 - if @note
 	%form#edit{:action => "/#{@note.id}/#{field}", :method => "post"}
 		%input{:name => "_method", :type => "hidden", :value => "put"}
