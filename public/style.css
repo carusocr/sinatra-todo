@@ -68,6 +68,10 @@ article:first-of-type {
 article:nth-child(even) {
 	background: #fafafa;
 }
+article.doing {
+	background: #008812;
+	color: #111;
+}
 article.done {
 	background: #009aaa;
 	color: #111;
@@ -89,8 +93,11 @@ p {
 	font-size: 1.2em;
 	color: #222;
 }
-.meta {
-	font-size: 1.2em;
+a.meta {
+	color: #AAA;
+	text-decoration: none;
+}
+a.meta:visited {
 	color: #AAA;
 	text-decoration: none;
 }
@@ -98,6 +105,9 @@ p {
 	font-size: 0.8em;
 	color: #AAA;
 	font-style: italic;
+}
+.content {
+	text-decoration: none;
 }
 .links {
 	font-size: 1.8em;

@@ -23,17 +23,17 @@
 	- note.status = :ohshit if note.created_at < Date.today && note.status == :new
 	- if note.created_at == $curday || note.status == :ohshit && note.created_at < $curday
 		%article{:class => "#{note.status}"}
-			= note.content
+			%a.content{:href => "/#{note.id}"}= note.content
 			= note.created_at if note.status == :ohshit && $curday != note.created_at
 			%p.comment
 				= note.comment if !note.comment.nil? && (note.status == :done || note.status == :slack)
-			%p.icons
+			%p.icons.meta
 				- unless note.status == :slack || note.status == :done
-					%a{:href => "/#{note.id}"} &#9998
+					%a.meta{:href => "/#{note.id}/activate"} ↯
 				- unless note.status == :done || note.status == :slack
-					%a{:href => "/#{note.id}/slack"} &#8621
-				%a{:href => "/#{note.id}/complete"} ↯
+					%a.meta{:href => "/#{note.id}/slack"} &#8621
+				%a.meta{:href => "/#{note.id}/complete"} &#9635
 				- if note.status == :done || note.status == :slack
-					%a{:href => "/#{note.id}/comment"} ...
+					%a.meta{:href => "/#{note.id}/comment"} ...
 				- unless note.status == :slack
 					%a.right.meta{:href => "/#{note.id}/delete"} &#9762

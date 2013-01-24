@@ -33,6 +33,8 @@ Future features:
 7. Rating of quality of task performance?
 8. Add ability to shift position of items in list
 10. Add online database functionality.
+* Ghettoed this out by using Dropbox. Weekend task is to get better alternative...PostgreSQL on Heroku?
+11. Track amount of time task is spent in 'doing' phase, easy to do by keeping a :duration value and incrementing it every time status goes from 'active' to 'done' or 'new' or whatever.
 
 Additional behaviors: 
 
@@ -57,7 +59,7 @@ class Note
 	property :id, Serial
 	property :content, Text, :required=>true
 	property :comment, Text
-	property :status, Enum[ :new, :done, :slack, :ohshit], :default=> :new
+	property :status, Enum[ :new, :doing, :done, :slack, :ohshit], :default=> :new
 	property :created_at, Date
 	property :updated_at, DateTime
 	property :pomodoros, Integer, :default => 0
@@ -143,10 +145,20 @@ end
 
 get '/:id/complete' do
 	n = Note.get params[:id]
-	if n.status == :new || n.status == :slack
+	if n.status == :new || n.status == :slack || n.status == :doing
 		n.status = :done
 	elsif n.status == :done
 		n.status = :new
+	end
+	n.updated_at = Time.now
+	n.save
+	redirect '/'
+end
+
+get '/:id/activate' do
+	n = Note.get params[:id]
+	if (n.status == :new || n.status == :ohshit) && $curday == Date.today
+		n.status = :doing
 	end
 	n.updated_at = Time.now
 	n.save
