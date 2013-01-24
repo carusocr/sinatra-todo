@@ -27,9 +27,10 @@ Future features:
 - 6. Ability to note amount of time spent on each task if desired...pomodoro count?
 - 7. Rating of quality of task performance?
 - 8. Add ability to shift position of items in list
-- 10. Add online database functionality. - iriscouch is proving to be a pain in the ass.
+- 10. Add online database functionality. - COMPLETED, but super ghetto...recall.db is a link to a link to each machine's Dropbox folder.
+- 11. Add PostgreSQL via Heroku.
 
-Additional behaviors: 
+Additional behaviors to add: 
 
 Todo tracks how many times I've created and then deleted a certain task, maybe by checking for 
 keywords like 'call annoying uncle' and starts taking the initiative - adding that task on a day that
