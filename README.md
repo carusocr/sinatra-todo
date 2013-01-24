@@ -28,6 +28,7 @@ Future features:
 - 7. Rating of quality of task performance?
 - 8. Add ability to shift position of items in list
 - 10. Add online database functionality. - COMPLETED, but super ghetto...recall.db is a link to a link to each machine's Dropbox folder.
+- 11. Add PostgreSQL via Heroku.
 
 Additional behaviors to add: 
 
