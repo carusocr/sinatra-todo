@@ -19,12 +19,13 @@ Yellow: You didn't have the guts to finish this task and marked it 'slacked'. A 
 There are a set of icons under each task, although task state determines which icons are 
 displayed:
 
-✎				Edit task. This icon is available only for uncompleted tasks.
 ↯				Complete task. This icon is displayed for uncomplete, slacked, or completed tasks.
 ↭				Slack on task. This icon is displayed only for uncomplete tasks.
 ☢				Delete task. This icon is available for all tasks except slack(testament!).
 ...			Postmortem comments. These can be entered for completed or slacked tasks in order to
 				provide additional information about the task's execution.
+
+Click on a task's text to edit it.
 
 Future features:
 3. Add duration and comments section to database.
