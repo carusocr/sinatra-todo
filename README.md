@@ -1,7 +1,7 @@
 sinatra-todo
 ============
 
-Ruby to-do list. That's it. Using it for practicing ruby, learning Sinatra + haml.
+Ruby to-do list. Using it for practicing ruby, learning Sinatra + haml.
  Author : Chris Caruso Dec 2012
 
 This todo list tracks my tasks for a given day, changing colors to display their current state.
