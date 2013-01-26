@@ -10,6 +10,7 @@ me from simply deleting undone tasks at the end of the day.
 
 White: uncompleted task
 Red: uncompleted task, automatically carried over from previous day
+Green: Task is currently in progress. Todo will keep track of time spent performing task.
 Aqua: completed task. A red task that is completed will vanish from the current day's display 
 			and show up in aqua on the day it was created.
 			* add footnote listing completion date.
@@ -19,7 +20,8 @@ Yellow: You didn't have the guts to finish this task and marked it 'slacked'. A 
 There are a set of icons under each task, although task state determines which icons are 
 displayed:
 
-↯				Complete task. This icon is displayed for uncomplete, slacked, or completed tasks.
+↯				Activate task. Todo will begin to track time spent performing task.
+▣				Complete task. This icon is displayed for uncomplete, slacked, or completed tasks.
 ↭				Slack on task. This icon is displayed only for uncomplete tasks.
 ☢				Delete task. This icon is available for all tasks except slack(testament!).
 ...			Postmortem comments. These can be entered for completed or slacked tasks in order to
@@ -28,8 +30,7 @@ displayed:
 Click on a task's text to edit it.
 
 Future features:
-3. Add duration and comments section to database.
-5. Add some sort of show/hide comments in home display.
+3. Add duration and comments section to database. * COMMENTS DONE
 6. Ability to note amount of time spent on each task if desired...pomodoro count?
 7. Rating of quality of task performance?
 8. Add ability to shift position of items in list
@@ -51,6 +52,7 @@ require 'haml'
 require 'active_support/all'
 
 $curday = Date.today
+$duration = 0
 
 #database setup
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/recall.db")
@@ -64,6 +66,7 @@ class Note
 	property :created_at, Date
 	property :updated_at, DateTime
 	property :pomodoros, Integer, :default => 0
+	property :duration, Real
 end
 
 DataMapper.finalize.auto_upgrade!
@@ -71,7 +74,7 @@ DataMapper.finalize.auto_upgrade!
 get '/' do
 	@notes = Note.all :order=>:id.desc
 	@title = 'All Notes'
-	haml :home, :locals => {:$curday => $curday}
+	haml :home, :locals => {:$curday => $curday, :$duration => $duration}
 end
 
 get '/present' do
@@ -125,12 +128,6 @@ get '/:id/comment' do
 end 
 
 put '/:id/content' do
-#	n = Note.get params[:id]
-#	n.content = params[:content]
-#	n.status = params[:status] ? :done : :new
-#	n.updated_at = Time.now
-#	n.save
-#	redirect '/'
 	save(:id, 'content')
 end
 
@@ -146,6 +143,9 @@ end
 
 get '/:id/complete' do
 	n = Note.get params[:id]
+	if n.status == :doing
+		$duration += (Time.now - n.updated_at)/60
+	end
 	if n.status == :new || n.status == :slack || n.status == :doing
 		n.status = :done
 	elsif n.status == :done
