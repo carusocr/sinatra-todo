@@ -2,7 +2,7 @@ sinatra-todo
 ============
 
 Ruby to-do list. Using it for practicing ruby, learning Sinatra + haml.
- Author : Chris Caruso Dec 2012
+ Author : Chris Caruso
 
 This todo list tracks my tasks for a given day, changing colors to display their current state.
 I'm looking to make a todo list that compensates for my laziness by nagging appropriately and preventing me from simply deleting undone tasks at the end of the day.
