@@ -38,6 +38,8 @@ Future features:
 * Ghettoed this out by using Dropbox. Weekend task is to get better alternative...PostgreSQL on Heroku?
 11. Track amount of time task is spent in 'doing' phase, easy to do by keeping a :duration value and incrementing it every time status goes from 'active' to 'done' or 'new' or whatever.
 
+20120126 - Getting started on this but duration really should be a database value that gets updated...when? ONLY WHEN AN ACTIVE TASK CHANGES STATUS TO COMPLETED. Easy enough, but what about re-zeroing the duration variable every time? Only need to do that when the status goes to 'new', right?
+
 Additional behaviors: 
 
 Todo tracks how many times I've created and then deleted a certain task, maybe by checking for 
@@ -66,7 +68,7 @@ class Note
 	property :created_at, Date
 	property :updated_at, DateTime
 	property :pomodoros, Integer, :default => 0
-	property :duration, Real
+	property :duration, Float
 end
 
 DataMapper.finalize.auto_upgrade!

@@ -27,9 +27,9 @@
 			= note.created_at if note.status == :ohshit && $curday != note.created_at
 			%p.comment
 				= note.comment if !note.comment.nil? && (note.status == :done || note.status == :slack)
-				- if note.status == :done
+				- if note.status == :done && note.duration != nil
 					Duration:
-					= $duration.round if $duration > 0
+					= $duration.round
 					&nbspminutes
 			%p.icons.meta
 				- unless note.status == :slack || note.status == :done
