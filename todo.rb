@@ -68,7 +68,7 @@ class Note
 	property :created_at, Date
 	property :updated_at, DateTime
 	property :pomodoros, Integer, :default => 0
-	property :duration, Float
+	property :duration, Float, :default => 0
 end
 
 DataMapper.finalize.auto_upgrade!
