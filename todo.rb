@@ -40,6 +40,8 @@ Future features:
 
 20120126 - Getting started on this but duration really should be a database value that gets updated...when? ONLY WHEN AN ACTIVE TASK CHANGES STATUS TO COMPLETED. Easy enough, but what about re-zeroing the duration variable every time? Only need to do that when the status goes to 'new', right?
 
+Need to add deactivation ability! This doesn't set duration back to zero.
+
 Additional behaviors: 
 
 Todo tracks how many times I've created and then deleted a certain task, maybe by checking for 
@@ -147,11 +149,17 @@ get '/:id/complete' do
 	n = Note.get params[:id]
 	if n.status == :doing
 		$duration += (Time.now - n.updated_at)/60
+		if n.duration.nil?
+			n.duration = $duration
+		else
+			n.duration = $duration + n.duration
+		end
 	end
 	if n.status == :new || n.status == :slack || n.status == :doing
 		n.status = :done
 	elsif n.status == :done
 		n.status = :new
+		$duration = 0
 	end
 	n.updated_at = Time.now
 	n.save
@@ -160,7 +168,15 @@ end
 
 get '/:id/activate' do
 	n = Note.get params[:id]
-	if (n.status == :new || n.status == :ohshit) && $curday == Date.today
+	if n.status == :doing
+		n.status = :new
+		if n.duration.nil?
+			n.duration = $duration
+		else
+			n.duration = $duration + n.duration
+		end
+		$duration = 0
+	elsif (n.status == :new || n.status == :ohshit) && $curday == Date.today
 		n.status = :doing
 	end
 	n.updated_at = Time.now
