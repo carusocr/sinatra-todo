@@ -30,6 +30,7 @@ displayed:
 Click on a task's text to edit it.
 
 Future features:
+1. Fix red task behavior...don't punt it back to day of creation!
 3. Add duration and comments section to database. * COMMENTS DONE
 6. Ability to note amount of time spent on each task if desired...pomodoro count?
 7. Rating of quality of task performance?
@@ -43,6 +44,8 @@ Future features:
 Need to add deactivation ability! This doesn't set duration back to zero.
 
 Additional behaviors: 
+
+PRIORITY LEVELS!
 
 Todo tracks how many times I've created and then deleted a certain task, maybe by checking for 
 keywords like 'call annoying uncle' and starts taking the initiative - adding that task on a day that
@@ -71,6 +74,7 @@ class Note
 	property :updated_at, DateTime
 	property :pomodoros, Integer, :default => 0
 	property :duration, Float, :default => 0
+	property :priority, Integer, :default => 0
 end
 
 DataMapper.finalize.auto_upgrade!
