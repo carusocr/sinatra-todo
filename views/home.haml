@@ -26,11 +26,12 @@
 			%a.content{:href => "/#{note.id}"}= note.content
 			= note.created_at if note.status == :ohshit && $curday != note.created_at
 			%p.comment
-				= note.comment if !note.comment.nil? && (note.status == :done || note.status == :slack)
-				- if note.status == :done && note.duration != nil && note.duration > 0
+				- if note.duration != nil && note.duration > 0 && note.status != :doing
 					Duration:
 					= note.duration.round
 					min
+				- if !note.comment.nil? && (note.status == :done || note.status == :slack)
+					%br= note.comment
 			%p.icons.meta
 				- unless note.status == :slack || note.status == :done
 					%a.meta{:href => "/#{note.id}/activate"} ↯
