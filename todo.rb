@@ -74,7 +74,7 @@ class Note
 	property :updated_at, DateTime
 	property :pomodoros, Integer, :default => 0
 	property :duration, Float, :default => 0
-	property :priority, Integer, :default => 0
+	property :priority, Boolean, :default => false
 end
 
 DataMapper.finalize.auto_upgrade!
@@ -103,6 +103,7 @@ end
 post '/' do
 	n = Note.new
 	n.content = params[:content]
+	n.priority = params[:priority]
 	n.created_at = $curday
 	n.updated_at = Time.now
 	n.save

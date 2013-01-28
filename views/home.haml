@@ -18,11 +18,13 @@
 	%section#add
 		%form{:action => "/", :method => "post"}
 			%textarea{:name => "content", :placeholder => "Your note...", :id => "note_entry"}
+			%input{:type => "checkbox", :name => "priority", :value => 1} !
 			%input{:type => "submit", :value => "Take Note!", :id => "note_input"}
 - @notes.each do |note| 
 	- note.status = :ohshit if note.created_at < Date.today && note.status == :new
 	- if note.created_at == $curday || note.status == :ohshit && note.created_at < $curday
 		%article{:class => "#{note.status}"}
+			= note.priority
 			%a.content{:href => "/#{note.id}"}= note.content
 			= note.created_at if note.status == :ohshit && $curday != note.created_at
 			%p.comment
