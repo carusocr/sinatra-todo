@@ -38,6 +38,7 @@ Future features:
 10. Add online database functionality.
 * Ghettoed this out by using Dropbox. Weekend task is to get better alternative...PostgreSQL on Heroku?
 11. Track amount of time task is spent in 'doing' phase, easy to do by keeping a :duration value and incrementing it every time status goes from 'active' to 'done' or 'new' or whatever.
+12. Consolidate activate and complete code into one 'update' method?
 
 20120126 - Getting started on this but duration really should be a database value that gets updated...when? ONLY WHEN AN ACTIVE TASK CHANGES STATUS TO COMPLETED. Easy enough, but what about re-zeroing the duration variable every time? Only need to do that when the status goes to 'new', right?
 
@@ -175,6 +176,7 @@ get '/:id/activate' do
 	n = Note.get params[:id]
 	if n.status == :doing
 		n.status = :new
+		$duration += (Time.now - n.updated_at)/60
 		if n.duration.nil?
 			n.duration = $duration
 		else
