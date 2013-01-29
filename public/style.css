@@ -121,6 +121,7 @@ a.meta:visited {
 }
 #note_input {
 	vertical-align: bottom;
+	float: right;
 }
 .right {
 	float: right;
