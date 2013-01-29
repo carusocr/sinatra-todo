@@ -31,19 +31,14 @@ Click on a task's text to edit it.
 
 Future features:
 1. Fix red task behavior...don't punt it back to day of creation!
-6. Ability to note amount of time spent on each task if desired...pomodoro count?
-8. Add ability to shift position of items in list
-10. Add online database functionality.
+2. Ability to note amount of time spent on each task if desired...pomodoro count?
+3. Rating of quality of task performance?
+4. Add ability to shift position of items in list
+5. Add online database functionality.
 * Ghettoed this out by using Dropbox. Weekend task is to get better alternative...PostgreSQL on Heroku?
-11. Priority.
-
-20120126 - Getting started on this but duration really should be a database value that gets updated...when? ONLY WHEN AN ACTIVE TASK CHANGES STATUS TO COMPLETED. Easy enough, but what about re-zeroing the duration variable every time? Only need to do that when the status goes to 'new', right?
-
-Need to add deactivation ability! This doesn't set duration back to zero.
+6. Consolidate activate and complete code into one 'update' method?
 
 Additional behaviors: 
-
-PRIORITY LEVELS!
 
 Todo tracks how many times I've created and then deleted a certain task, maybe by checking for 
 keywords like 'call annoying uncle' and starts taking the initiative - adding that task on a day that
@@ -72,7 +67,7 @@ class Note
 	property :updated_at, DateTime
 	property :pomodoros, Integer, :default => 0
 	property :duration, Float, :default => 0
-	property :priority, Boolean, :default => 0
+	property :priority, Boolean, :default => false
 end
 
 DataMapper.finalize.auto_upgrade!
@@ -173,6 +168,7 @@ get '/:id/activate' do
 	n = Note.get params[:id]
 	if n.status == :doing
 		n.status = :new
+		$duration += (Time.now - n.updated_at)/60
 		if n.duration.nil?
 			n.duration = $duration
 		else
