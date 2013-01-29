@@ -18,6 +18,7 @@
 	%section#add
 		%form{:action => "/", :method => "post"}
 			%textarea{:name => "content", :placeholder => "Your note...", :id => "note_entry"}
+			%input{:type => "checkbox", :name => "priority", :value => 1}
 			%input{:type => "submit", :value => "Take Note!", :id => "note_input"}
 - @notes.each do |note| 
 	- note.status = :ohshit if note.created_at < Date.today && note.status == :new
