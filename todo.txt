@@ -1,0 +1,3 @@
+(A) Fix activation behavior for overdue tasks.
+(B) Add priority option in edit window.
+(C) Make completed/not-current tasks uneditable.

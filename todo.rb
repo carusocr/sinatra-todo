@@ -37,6 +37,7 @@ Future features:
 5. Add online database functionality.
 * Ghettoed this out by using Dropbox. Weekend task is to get better alternative...PostgreSQL on Heroku?
 6. Consolidate activate and complete code into one 'update' method?
+7. Add some sort of 'random notes and ideas' section.
 
 Additional behaviors: 
 
