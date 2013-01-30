@@ -69,6 +69,8 @@ class Note
 	property :pomodoros, Integer, :default => 0
 	property :duration, Float, :default => 0
 	property :priority, Boolean, :default => false
+	property :complete, Boolean, :default => false
+	property :active, Boolean, :default => false
 end
 
 DataMapper.finalize.auto_upgrade!
@@ -146,7 +148,7 @@ end
 
 get '/:id/complete' do
 	n = Note.get params[:id]
-	if n.status == :doing
+	if n.active == true
 		$duration += (Time.now - n.updated_at)/60
 		if n.duration.nil?
 			n.duration = $duration
@@ -154,10 +156,13 @@ get '/:id/complete' do
 			n.duration = $duration + n.duration
 		end
 	end
-	if n.status == :new || n.status == :slack || n.status == :doing
+	if n.status == :new || n.status == :slack || n.active == true
 		n.status = :done
-	elsif n.status == :done
+		n.complete = true
+		n.active = false
+	elsif n.complete == true
 		n.status = :new
+		n.complete = false
 		$duration = 0
 	end
 	n.updated_at = Time.now
@@ -167,8 +172,9 @@ end
 
 get '/:id/activate' do
 	n = Note.get params[:id]
-	if n.status == :doing
+	if n.active == true
 		n.status = :new
+		n.active = false
 		$duration += (Time.now - n.updated_at)/60
 		if n.duration.nil?
 			n.duration = $duration
@@ -178,6 +184,7 @@ get '/:id/activate' do
 		$duration = 0
 	elsif (n.status == :new || n.status == :ohshit) && $curday == Date.today
 		n.status = :doing
+		n.active = true
 	end
 	n.updated_at = Time.now
 	n.save

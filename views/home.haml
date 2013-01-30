@@ -18,32 +18,29 @@
 	%section#add
 		%form{:action => "/", :method => "post"}
 			%textarea{:name => "content", :placeholder => "Your note...", :id => "note_entry"}
-<<<<<<< HEAD
-			%input{:type => "checkbox", :name => "priority", :value => 1}
-=======
 			%input{:type => "checkbox", :name => "priority", :value => 1} !
->>>>>>> 9bd8366098fdab07b60162cee35625bb6ccdb7a4
 			%input{:type => "submit", :value => "Take Note!", :id => "note_input"}
 - @notes.each do |note| 
 	- note.status = :ohshit if note.created_at < Date.today && note.status == :new
-	- if note.created_at == $curday || note.status == :ohshit && note.created_at < $curday
+	- if note.created_at == $curday || note.status == :ohshit && note.created_at < $curday || note.active == true
 		%article{:class => "#{note.status}"}
 			%a.content{:href => "/#{note.id}"}= note.content
-			= note.created_at if note.status == :ohshit && $curday != note.created_at
+			= note.complete
+			= note.active
+			= note.created_at if (note.status == :ohshit || note.active == true) && $curday != note.created_at
 			%p.comment
-				- if note.duration != nil && note.duration > 0 && note.status != :doing
+				- if note.duration != nil && note.duration > 0 && note.active == false
 					Duration:
 					= note.duration.round
 					min
-				- if !note.comment.nil? && (note.status == :done || note.status == :slack)
+				- if !note.comment.nil? && (note.complete == true || note.status == :slack)
 					%br= note.comment
 			%p.icons.meta
-				- unless note.status == :slack || note.status == :done
+				- unless note.status == :slack || note.complete == true
 					%a.meta{:href => "/#{note.id}/activate"} ↯
-				- unless note.status == :done || note.status == :slack
 					%a.meta{:href => "/#{note.id}/slack"} &#8621
 				%a.meta{:href => "/#{note.id}/complete"} &#9635
-				- if note.status == :done || note.status == :slack
+				- if note.complete == true || note.status == :slack
 					%a.meta{:href => "/#{note.id}/comment"} ...
 				- unless note.status == :slack
 					%a.right.meta{:href => "/#{note.id}/delete"} &#9762
