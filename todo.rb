@@ -172,7 +172,7 @@ end
 
 get '/:id/activate' do
 	n = Note.get params[:id]
-	if n.active == true
+	if (n.active == true || n.status == :doing)
 		n.status = :new
 		n.active = false
 		$duration += (Time.now - n.updated_at)/60
@@ -181,11 +181,11 @@ get '/:id/activate' do
 		else
 			n.duration = $duration + n.duration
 		end
-		$duration = 0
 	elsif (n.status == :new || n.status == :ohshit) && $curday == Date.today
 		n.status = :doing
 		n.active = true
 	end
+	$duration = 0
 	n.updated_at = Time.now
 	n.save
 	redirect '/'
