@@ -3,3 +3,4 @@
 (B) Add priority option in edit window.
 (C) Make completed/not-current tasks uneditable.
 (D) Add repeating tasks, i.e. 'Feed cat' every second Thursday.
+(E) Add ability to move task to another day.

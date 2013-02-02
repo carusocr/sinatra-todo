@@ -24,7 +24,10 @@
 	- note.status = :ohshit if note.created_at < Date.today && note.status == :new
 	- if note.created_at == $curday || note.status == :ohshit && note.created_at < $curday || note.active == true
 		%article{:class => "#{note.status}"}
-			%a.content{:href => "/#{note.id}"}= note.content
+			- if !note.complete
+				%a.content{:href => "/#{note.id}"}= note.content
+			- else
+				= note.content
 			= note.complete
 			= note.active
 			= note.status
