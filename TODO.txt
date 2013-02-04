@@ -1,5 +1,4 @@
-(A) Fix activation behavior for overdue tasks. - DONE
-(B) Duration is acting weird when updating multiple tasks, fix it.
+(A) Duration is acting weird when updating multiple tasks, fix it.
 (B) Add priority option in edit window.
 (C) Make completed/not-current tasks uneditable.
 (D) Add repeating tasks, i.e. 'Feed cat' every second Thursday.
