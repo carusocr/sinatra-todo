@@ -59,6 +59,7 @@ require 'active_support/all'
 
 $curday = Date.today
 $duration = 0
+$test
 
 #database setup
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/recall.db")
