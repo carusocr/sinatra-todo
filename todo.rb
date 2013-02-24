@@ -45,6 +45,11 @@ Todo tracks how many times I've created and then deleted a certain task, maybe b
 keywords like 'call annoying uncle' and starts taking the initiative - adding that task on a day that
 I've specified as flexible(typically weekends) and then not allowing me to delete it.
 
+BUGS:
+
+1. Duration is cumulative if multiple tasks are activated. This is because I'm using a single duration variable to hold the value for all tasks, whoops. 
+2. Class: task?
+
 =end
 
 require 'sinatra'
@@ -54,6 +59,7 @@ require 'active_support/all'
 
 $curday = Date.today
 $duration = 0
+$test
 
 #database setup
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/recall.db")
