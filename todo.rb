@@ -50,6 +50,14 @@ BUGS:
 1. Duration is cumulative if multiple tasks are activated. This is because I'm using a single duration variable to hold the value for all tasks, whoops. 
 2. Class: task?
 
+REPEATER TASKS:
+
+1. Can create a task and flag it as 'repeating', which means that it will appear on the same day each week. The idea of this is to have the program remind me to do things like take out the trash, etc.
+2. Once a task is created and flagged as repeater, how does the app make a new task?
+3. Create repeating task as a separate button?
+4. Check date against all tasks in database that have repeater flag, if day of week matches AND if there's no task named the same already created, then make a new task without any prompting.
+5. Would be nice if task was created before the actual day, but be careful not to do anything dumb like create infinite tasks.
+
 =end
 
 require 'sinatra'
