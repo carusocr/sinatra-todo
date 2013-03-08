@@ -91,8 +91,8 @@ DataMapper.finalize.auto_upgrade!
 
 get '/' do
 	@notes = Note.all :order=>:id.desc
-	@title = 'All Notes'
-	haml :home, :locals => {:$curday => $curday, :$duration => $duration}
+	@title = ' - CRC - '
+	haml :home, :locals => {:curday => $curday, :duration => $duration}
 end
 
 get '/present' do
