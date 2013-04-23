@@ -48,7 +48,16 @@ I've specified as flexible(typically weekends) and then not allowing me to delet
 BUGS:
 
 1. Duration is cumulative if multiple tasks are activated. This is because I'm using a single duration variable to hold the value for all tasks, whoops. 
+	## Fix is to make duration a hash. 
 2. Class: task?
+
+REPEATER TASKS:
+
+1. Can create a task and flag it as 'repeating', which means that it will appear on the same day each week. The idea of this is to have the program remind me to do things like take out the trash, etc.
+2. Once a task is created and flagged as repeater, how does the app make a new task?
+3. Create repeating task as a separate button?
+4. Check date against all tasks in database that have repeater flag, if day of week matches AND if there's no task named the same already created, then make a new task without any prompting.
+5. Would be nice if task was created before the actual day, but be careful not to do anything dumb like create infinite tasks.
 
 =end
 
@@ -58,8 +67,7 @@ require 'haml'
 require 'active_support/all'
 
 $curday = Date.today
-$duration = 0
-$test
+duration = Hash.new
 
 #database setup
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/recall.db")
@@ -77,14 +85,15 @@ class Note
 	property :priority, Boolean, :default => false
 	property :complete, Boolean, :default => false
 	property :active, Boolean, :default => false
+	property :repeater, Boolean, :default => false
 end
 
 DataMapper.finalize.auto_upgrade!
 
 get '/' do
 	@notes = Note.all :order=>:id.desc
-	@title = 'All Notes'
-	haml :home, :locals => {:$curday => $curday, :$duration => $duration}
+	@title = ' - CRC - '
+	haml :home, :locals => {:$curday => $curday}
 end
 
 get '/present' do
@@ -154,12 +163,13 @@ end
 
 get '/:id/complete' do
 	n = Note.get params[:id]
+	duration["#{n}"] = 0 if duration["#{n}"].nil?
 	if n.active == true
-		$duration += (Time.now - n.updated_at)/60
+		duration["#{n}"] += (Time.now - n.updated_at)/60
 		if n.duration.nil?
-			n.duration = $duration
+			n.duration = duration["#{n}"]
 		else
-			n.duration = $duration + n.duration
+			n.duration = duration["#{n}"] + n.duration
 		end
 	end
 	if n.status == :new || n.status == :slack || n.active == true
@@ -169,7 +179,7 @@ get '/:id/complete' do
 	elsif n.complete == true
 		n.status = :new
 		n.complete = false
-		$duration = 0
+		duration["#{n}"] = 0
 	end
 	n.updated_at = Time.now
 	n.save
@@ -181,17 +191,17 @@ get '/:id/activate' do
 	if (n.active == true || n.status == :doing)
 		n.status = :new
 		n.active = false
-		$duration += (Time.now - n.updated_at)/60
+		duration["#{n}"] += (Time.now - n.updated_at)/60
 		if n.duration.nil?
-			n.duration = $duration
+			n.duration = duration["#{n}"]
 		else
-			n.duration = $duration + n.duration
+			n.duration = duration["#{n}"] + n.duration
 		end
 	elsif (n.status == :new || n.status == :ohshit) && $curday == Date.today
 		n.status = :doing
 		n.active = true
 	end
-	$duration = 0
+	duration["#{n}"] = 0
 	n.updated_at = Time.now
 	n.save
 	redirect '/'
@@ -203,5 +213,4 @@ get '/:id/slack' do
 	n.updated_at = Time.now
 	n.save
 	edit(:id, 'comment')
-	#redirect '/'
 end

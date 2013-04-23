@@ -1,7 +1,7 @@
 %html
 	%head
 		%meta{:charset => "utf8"}
-			%title= @title + ' | Recall '
+			%title= @title + ' Recall '
 			%link{:href => "/reset.css", :rel => "stylesheet"}
 				%link{:href => "style.css", :rel => "stylesheet"}
 	%body
@@ -22,7 +22,7 @@
 			%input{:type => "submit", :value => "Take Note!", :id => "note_input"}
 - @notes.each do |note| 
 	- note.status = :ohshit if note.created_at < Date.today && note.status == :new
-	- if note.created_at == $curday || note.status == :ohshit && note.created_at < $curday || note.active == true
+	- if note.created_at == $curday || note.status == :ohshit && note.created_at < $curday
 		%article{:class => "#{note.status}"}
 <<<<<<< HEAD
 			- if !note.complete
