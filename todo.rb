@@ -188,6 +188,7 @@ end
 
 get '/:id/activate' do
 	n = Note.get params[:id]
+	duration["#{n}"] = 0 if duration["#{n}"].nil?
 	if (n.active == true || n.status == :doing)
 		n.status = :new
 		n.active = false
