@@ -23,13 +23,14 @@ displayed:
 - ...     Postmortem comments. These can be entered for aqua or yellow tasks in order to provide additional information about the task's execution.
 
 Future features:
-- 5. Add some sort of show/hide comments in home display.
-- 6. Ability to note amount of time spent on each task if desired...pomodoro count?
-- 7. Rating of quality of task performance? * Nah, the comments section has served this purpose well during testing.
-- 8. Add ability to shift position of items in list.
-- 10. Add online database functionality. - COMPLETED, but super ghetto...recall.db is a link to a link to each machine's Dropbox folder.
-- 11. Add PostgreSQL via Heroku.
-- 12. Clean up time tracking functionality. By clean up I mean make it actually work.
+-  Add some sort of show/hide comments in home display.
+-  Ability to note amount of time spent on each task if desired...pomodoro count?
+-  Rating of quality of task performance? * Nah, the comments section has served this purpose well during testing.
+-  Add ability to shift position of items in list.
+-  Add online database functionality. - COMPLETED, but super ghetto...recall.db is a link to a link to each machine's Dropbox folder.
+-  Add PostgreSQL via Heroku.
+-  Clean up time tracking functionality. By clean up I mean make it actually work.
+- When an overdue task accumulates some worked time on present day, move create_date to current day? At least something about avoiding dumping it back to original create date when you finally get around to completing task.
 
 Additional behaviors to add: 
 
