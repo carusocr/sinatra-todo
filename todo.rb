@@ -80,6 +80,7 @@ class Note
 	property :status, Enum[ :new, :doing, :done, :slack, :ohshit], :default=> :new
 	property :created_at, Date
 	property :updated_at, DateTime
+	property :completed_at, DateTime
 	property :pomodoros, Integer, :default => 0
 	property :duration, Float, :default => 0
 	property :priority, Boolean, :default => false
@@ -182,6 +183,7 @@ get '/:id/complete' do
 		duration["#{n}"] = 0
 	end
 	n.updated_at = Time.now
+	n.completed_at = $curday
 	n.save
 	redirect '/'
 end
