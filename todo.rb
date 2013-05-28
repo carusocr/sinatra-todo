@@ -30,26 +30,16 @@ displayed:
 Click on a task's text to edit it.
 
 Future features:
-1. Fix red task behavior...don't punt it back to day of creation!
-2. Ability to note amount of time spent on each task if desired...pomodoro count?
-3. Rating of quality of task performance?
-4. Add ability to shift position of items in list
-5. Add online database functionality.
-* Ghettoed this out by using Dropbox. Weekend task is to get better alternative...PostgreSQL on Heroku?
-6. Consolidate activate and complete code into one 'update' method?
-7. Add some sort of 'random notes and ideas' section.
+1. Add ability to shift position of items in list
+2. Consolidate activate and complete code into one 'update' method?
+3. Add some sort of 'random notes and ideas' section.
+4. Add ability to move task to different day.
 
 Additional behaviors: 
 
 Todo tracks how many times I've created and then deleted a certain task, maybe by checking for 
 keywords like 'call annoying uncle' and starts taking the initiative - adding that task on a day that
 I've specified as flexible(typically weekends) and then not allowing me to delete it.
-
-BUGS:
-
-1. Duration is cumulative if multiple tasks are activated. This is because I'm using a single duration variable to hold the value for all tasks, whoops. 
-	## Fix is to make duration a hash. 
-2. Class: task?
 
 REPEATER TASKS:
 
