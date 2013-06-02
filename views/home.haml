@@ -18,7 +18,8 @@
 	%section#add
 		%form{:action => "/", :method => "post"}
 			%textarea{:name => "content", :placeholder => "Your note...", :id => "note_entry"}
-			%input{:type => "checkbox", :name => "priority", :value => 1} !
+			%input{:type => "hidden", :name => "repeater", :value => "0"}
+			%input{:type => "checkbox", :name => "repeater", :value => "1"} Repeater
 			%input{:type => "submit", :value => "Take Note!", :id => "note_input"}
 - @notes.each do |note| 
 	- note.status = :ohshit if note.created_at < Date.today && note.status == :new
@@ -28,6 +29,7 @@
 				%a.content{:href => "/#{note.id}"}= note.content
 			- else
 				= note.content
+				= note.repeater
 			= note.created_at if (note.status == :ohshit || note.active == true || note.created_at != note.completed_at) && $curday != note.created_at
 			%p.comment
 				- if note.duration != nil && note.duration > 0 && note.active == false

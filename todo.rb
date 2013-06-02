@@ -71,7 +71,6 @@ class Note
 	property :created_at, Date
 	property :updated_at, DateTime
 	property :completed_at, DateTime
-	property :pomodoros, Integer, :default => 0
 	property :duration, Float, :default => 0
 	property :priority, Boolean, :default => false
 	property :complete, Boolean, :default => false
@@ -105,7 +104,7 @@ end
 post '/' do
 	n = Note.new
 	n.content = params[:content]
-	n.priority = params[:priority]
+	n.repeater = params[:repeater]
 	n.created_at = $curday
 	n.updated_at = Time.now
 	n.save
