@@ -79,7 +79,7 @@ class Note
 end
 
 #this is going to be the repeater creation task...check db, if matching dow for anything, make a new one and delete old
-if $curday == 4
+if $curday.cwday == 4
 	puts "foo"
 end
 
