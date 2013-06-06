@@ -102,13 +102,7 @@ get '/prevday' do
 end
 
 post '/' do
-	n = Note.new
-	n.content = params[:content]
-	n.repeater = params[:repeater]
-	n.created_at = $curday
-	n.updated_at = Time.now
-	n.save
-	redirect '/'
+  create(:content, :repeater)
 end
 
 def edit(id,field)
@@ -124,6 +118,16 @@ def save(id, field)
 	else
 		n.content = params[:content]
 	end
+	n.updated_at = Time.now
+	n.save
+	redirect '/'
+end
+
+def create(content, repeater)
+	n = Note.new
+	n.content = params[content]
+	n.repeater = params[repeater]
+	n.created_at = $curday
 	n.updated_at = Time.now
 	n.save
 	redirect '/'
