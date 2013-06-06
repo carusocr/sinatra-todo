@@ -123,6 +123,7 @@ def save(id, field)
 	redirect '/'
 end
 
+#call this when script launches if there's a repeater task that falls on that DOW
 def create(content, repeater)
 	n = Note.new
 	n.content = params[content]
