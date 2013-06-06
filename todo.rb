@@ -78,6 +78,11 @@ class Note
 	property :repeater, Boolean, :default => false
 end
 
+#this is going to be the repeater creation task...check db, if matching dow for anything, make a new one and delete old
+if $curday == 4
+	puts "foo"
+end
+
 DataMapper.finalize.auto_upgrade!
 
 get '/' do
