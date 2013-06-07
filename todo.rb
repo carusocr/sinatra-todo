@@ -57,6 +57,7 @@ require 'haml'
 require 'active_support/all'
 
 $curday = Date.today
+
 duration = Hash.new
 
 #database setup
@@ -82,15 +83,21 @@ end
 DataMapper.finalize.auto_upgrade!
 
 #this is going to be the repeater creation task...check db, if matching dow for anything, make a new one and delete old
-@repeaters = Note.all(:repeater => true)
-if $curday.cwday == 4
-	puts "foo"
+
+Note.all(:repeater => true).each do |rep|
+	if rep.created_at.cwday == Date.today.cwday
+		puts rep.created_at
+		puts rep.content
+	end
 end
+
+#added for troubleshooting
+#exit
 
 get '/' do
 	@notes = Note.all :order=>:id.desc
 	@title = ' - CRC - '
-	haml :home, :locals => {:$curday => $curday}
+	haml :home, :locals => {:curday => $curday}
 end
 
 get '/present' do
