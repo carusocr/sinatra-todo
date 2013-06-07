@@ -78,12 +78,14 @@ class Note
 	property :repeater, Boolean, :default => false
 end
 
+
+DataMapper.finalize.auto_upgrade!
+
 #this is going to be the repeater creation task...check db, if matching dow for anything, make a new one and delete old
+@repeaters = Note.all(:repeater => true)
 if $curday.cwday == 4
 	puts "foo"
 end
-
-DataMapper.finalize.auto_upgrade!
 
 get '/' do
 	@notes = Note.all :order=>:id.desc
