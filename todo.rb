@@ -86,8 +86,11 @@ DataMapper.finalize.auto_upgrade!
 
 def check_repeaters()
 	Note.all(:repeater => true).each do |rep|
-		if rep.created_at.cwday == Date.today.cwday && rep.complete == true && rep.created_at != Date.today
-			task_create(rep.content, true)
+		if rep.created_at.cwday == Date.today.cwday && rep.complete == true
+		# commented out to test repetition
+		#if rep.created_at.cwday == Date.today.cwday && rep.complete == true && rep.created_at != Date.today
+		
+		#	task_create(rep.content, true)
 			puts rep.created_at
 			puts rep.content
 		end
