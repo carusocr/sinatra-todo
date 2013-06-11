@@ -85,6 +85,7 @@ end
 get '/' do
 	check_repeaters()
 	#@notes = Note.all(:created_at=>$curday) + Note.all(:status=>:ohshit) + Note.all(:completed_at=>$curday)
+  @notes = Note.all :order=>:id.desc
 	@title = ' - CRC - '
 	haml :home, :locals => {:curday => $curday}
 end

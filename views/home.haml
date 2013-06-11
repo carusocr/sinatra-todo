@@ -29,7 +29,6 @@
 				%a.content{:href => "/#{note.id}"}= note.content
 			- else
 				= note.content
-				= note.repeater
 			= note.created_at if (note.status == :ohshit || note.active == true || note.created_at != note.completed_at) && $curday != note.created_at
 			%p.comment
 				- if note.duration != nil && note.duration > 0 && note.active == false
