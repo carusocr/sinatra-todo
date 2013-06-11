@@ -86,19 +86,15 @@ DataMapper.finalize.auto_upgrade!
 
 def check_repeaters()
 	Note.all(:repeater => true).each do |rep|
-		if rep.created_at.cwday == Date.today.cwday && rep.complete == true
-		# commented out to test repetition
-		#if rep.created_at.cwday == Date.today.cwday && rep.complete == true && rep.created_at != Date.today
-		
-		#	task_create(rep.content, true)
-			puts rep.created_at
-			puts rep.content
+		if rep.created_at.cwday == Date.today.cwday && rep.complete == true && rep.created_at != Date.today
+			#switch off repeater for old one
+			rep.repeater = false
+			rep.save
+			#now to make a new one...
+			Note.create(rep.attributes.merge(:id=>nil,:repeater=>true,:complete=>false,:status=>:new,:created_at=>Date.today))
 		end
 	end
 end
-
-#added for troubleshooting
-#exit
 
 get '/' do
 	check_repeaters()
@@ -124,6 +120,7 @@ end
 
 post '/' do
   task_create(:content, :repeater)
+	redirect '/'
 end
 
 def edit(id,field)
@@ -152,7 +149,7 @@ def task_create(content, repeater)
 	n.created_at = $curday
 	n.updated_at = Time.now
 	n.save
-	redirect '/'
+#	redirect '/'
 end
 
 get '/:id' do
