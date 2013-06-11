@@ -24,12 +24,9 @@ displayed:
 
 Future features:
 -  Add some sort of show/hide comments in home display.
--  Ability to note amount of time spent on each task if desired...pomodoro count?
--  Rating of quality of task performance? * Nah, the comments section has served this purpose well during testing.
 -  Add ability to shift position of items in list.
 -  Add online database functionality. - COMPLETED, but super ghetto...recall.db is a link to a link to each machine's Dropbox folder.
 -  Add PostgreSQL via Heroku.
--  Clean up time tracking functionality. By clean up I mean make it actually work.
 - When an overdue task accumulates some worked time on present day, move create_date to current day? At least something about avoiding dumping it back to original create date when you finally get around to completing task.
 
 Additional behaviors to add: 

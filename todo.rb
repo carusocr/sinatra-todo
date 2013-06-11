@@ -35,20 +35,6 @@ Future features:
 3. Add some sort of 'random notes and ideas' section.
 4. Add ability to move task to different day.
 
-Additional behaviors: 
-
-Todo tracks how many times I've created and then deleted a certain task, maybe by checking for 
-keywords like 'call annoying uncle' and starts taking the initiative - adding that task on a day that
-I've specified as flexible(typically weekends) and then not allowing me to delete it.
-
-REPEATER TASKS:
-
-1. Can create a task and flag it as 'repeating', which means that it will appear on the same day each week. The idea of this is to have the program remind me to do things like take out the trash, etc.
-2. Once a task is created and flagged as repeater, how does the app make a new task?
-3. Create repeating task as a separate button?
-4. Check date against all tasks in database that have repeater flag, if day of week matches AND if there's no task named the same already created, then make a new task without any prompting.
-5. Would be nice if task was created before the actual day, but be careful not to do anything dumb like create infinite tasks.
-
 =end
 
 require 'sinatra'
