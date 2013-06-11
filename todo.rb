@@ -84,7 +84,7 @@ end
 
 get '/' do
 	check_repeaters()
-	@notes = Note.all(:created_at=>$curday) + (Note.all(:status=>:ohshit) & Note.all(:created_at.lt=>$cutday)) + Note.all(:completed_at=>$curday)
+	#@notes = Note.all(:created_at=>$curday) + Note.all(:status=>:ohshit) + Note.all(:completed_at=>$curday)
 	@title = ' - CRC - '
 	haml :home, :locals => {:curday => $curday}
 end
