@@ -83,6 +83,9 @@ article.ohshit {
 	background: #942454;
 	color: #EEDD82;
 }
+article.repeater {
+	background: #d8d8d8;
+}
 article span {
 	font-size: 0.8em;
 }
