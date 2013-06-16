@@ -68,8 +68,6 @@ end
 
 DataMapper.finalize.auto_upgrade!
 
-#this is going to be the repeater creation task...check db, if matching dow for anything, make a new one and delete old
-
 def check_repeaters()
 	Note.all(:repeater => true).each do |rep|
 		if rep.created_at.cwday == Date.today.cwday && rep.complete == true && rep.created_at != Date.today
@@ -84,6 +82,7 @@ end
 
 get '/' do
 	check_repeaters()
+	#moved back to home.haml
 	#@notes = Note.all(:created_at=>$curday) + Note.all(:status=>:ohshit) + Note.all(:completed_at=>$curday)
   @notes = Note.all :order=>:id.desc
 	@title = ' - CRC - '
