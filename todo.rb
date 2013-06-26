@@ -35,6 +35,8 @@ Future features:
 3. Add some sort of 'random notes and ideas' section.
 4. Add ability to move task to different day.
 
+Encountered bug where active items follow when I switch days...was going to fix this but I kind of like the constant reminder of what I'm supposed to be working on while I plan ahead.
+
 =end
 
 require 'sinatra'
