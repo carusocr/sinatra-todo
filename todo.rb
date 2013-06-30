@@ -77,7 +77,7 @@ def check_repeaters()
 			rep.repeater = false
 			rep.save
 			#now to make a new one...
-			Note.create(rep.attributes.merge(:id=>nil,:repeater=>true,:complete=>false,:status=>:new,:created_at=>Date.today))
+			Note.create(rep.attributes.merge(:id=>nil,:repeater=>true,:complete=>false,:status=>:new,:created_at=>Date.today,:duration=>0))
 		end
 	end
 end
