@@ -27,6 +27,7 @@ header h2 {
 }
 #new_note textarea {
   width: 360px;
+  border-radius: 5px;
 }
 #edit textarea {
 	height: 50px;
@@ -46,8 +47,7 @@ header h2 {
 	width: 20px;
 }
 article {
-	border: 1px solid #ddd;
-	border-top: none;
+	border: 1px solid #323232;
 	padding: 5px 10px;
   box-shadow: 10px 10px 5px #888888;
   border-radius: 10px;
@@ -58,20 +58,24 @@ article:first-of-type {
 }
 article:nth-child(even) {
 	background: #fafafa;
+  background-image: -moz-linear-gradient(left, #FAFAFA 0%, #EEEEEE 100%);
 }
 article.doing {
 	background: #008812;
+  background-image: -moz-linear-gradient(left, #008812 0%, #007004 100%);
 	color: #111;
 }
 article.done {
-	background: #009aaa;
+  background-image: -moz-linear-gradient(left, #009aaa 0%, #007596 100%);
 	color: #111;
 }
 article.slack {
 	background: #EEDD82;
+  background-image: -moz-linear-gradient(left, #009aaa 0%, #007596 100%);
 }
 article.ohshit {
 	background: #942454;
+  background-image: -moz-linear-gradient(left, #942424 0%, #701212 100%);
 	color: #EEDD82;
 }
 article.repeater {
