@@ -25,19 +25,8 @@ header h2 {
 #add {
 	margin: 0 0 10px;
 }
-#add textarea {
-	height: 40px;
-	width: 510px;
-	padding: 10px;
-	border: 1px solid #ddd;
-	background: #ddd;
-}
-#add input {
-	height: 30px;
-	width: 100px;
-	margin: -50px 0 0;
-	border: 1px solid #ddd;
-	background: #bbb;
+#new_note textarea {
+  width: 360px;
 }
 #edit textarea {
 	height: 50px;
@@ -57,10 +46,12 @@ header h2 {
 	width: 20px;
 }
 article {
-	border: 1px solid #ccc;
+	border: 1px solid #ddd;
 	border-top: none;
 	padding: 5px 10px;
-	background: #EEE;
+  box-shadow: 10px 10px 5px #888888;
+  border-radius: 10px;
+  background-image: -moz-linear-gradient(left, #EEEEEE 0%, #DDDDDD 100%);
 }
 article:first-of-type {
 	border: 1px solid #ccc;

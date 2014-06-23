@@ -23,7 +23,7 @@ displayed:
 ↯				Activate task. Todo will begin to track time spent performing task.
 ▣				Complete task. This icon is displayed for uncomplete, slacked, or completed tasks.
 ↭				Slack on task. This icon is displayed only for uncomplete tasks.
-☢				Delete task. This icon is available for all tasks except slack(testament!).
+☢				Delete task. This icon is available for all tasks except slacked.
 ...			Postmortem comments. These can be entered for completed or slacked tasks in order to
 				provide additional information about the task's execution.
 
@@ -88,8 +88,6 @@ end
 
 get '/' do
 	check_repeaters()
-	#moved back to home.haml
-	#@notes = Note.all(:created_at=>$curday) + Note.all(:status=>:ohshit) + Note.all(:completed_at=>$curday)
   @notes = Note.all :order=>:id.desc
 	@title = ' - CRC - '
 	haml :home, :locals => {:curday => $curday}
