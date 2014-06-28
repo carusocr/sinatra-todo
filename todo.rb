@@ -107,6 +107,10 @@ get '/prevday' do
 	$curday = $curday - 1.day
 	redirect '/'
 end
+get '/table' do
+  @nums = ['a','b','c']
+  haml :table
+end
 
 post '/' do
   task_create(:content, :repeater)
