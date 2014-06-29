@@ -1,6 +1,7 @@
 %title= 'Test Table'
 %table{:border => "1"}
   %tbody
-    - @nums.each do |elem|
+    - @prices.each do |row|
       %tr
-        %td= elem
+        - row.each do |column|
+          %td= column

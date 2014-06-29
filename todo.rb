@@ -108,6 +108,15 @@ get '/prevday' do
 	redirect '/'
 end
 get '/table' do
+  @prices = [["pathmark", "America's Choice Boneless Chicken Breast Small Pack", "2.38 lb."],
+["pathmark", "America's Choice Boneless Chicken Breast", "1.88 lb."],
+["pathmark", "Tender-N-Juicy Boneless Chicken Breast Tenders", "3.98 lb."],
+["superfresh", "America's Choice Boneless Chicken Breast Small Pack", "2.38 lb."],
+["superfresh", "America's Choice Boneless Chicken Breast", "1.88 lb."],
+["superfresh", "America's Choice Fresh Thin Sliced Boneless Chicken Breast", "4.49 lb."],
+["superfresh", "Angus Beef Boneless Shoulder London Broil", "4.99 lb."],
+["superfresh", "Angus Beef Sirloin Tip London Broil", "4.99 lb."]
+]
   @nums = ['a','b','c']
   haml :table
 end
