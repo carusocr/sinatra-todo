@@ -126,8 +126,9 @@ a.meta:visited {
   border-radius: 5px;
   box-shadow: 5px 5px 2px #888888;
 .right {
-	float: right;
 }	
+#shop {
+  box-shadow: 5px 5px 2px #888888;
 .left {
 	float: left;
 }	
