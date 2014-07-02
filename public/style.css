@@ -31,6 +31,22 @@ tr {
   border-spacing: 1;
   background-image: -moz-linear-gradient(left, #FAFAFA 0%, #DDDDDD 100%);
 }
+#shoplist th {
+font-size:1.4em;
+text-align:left;
+padding-top:5px;
+padding-bottom:4px;
+background-color:#A7C942;
+color:#fff;
+}
+#shoplist td {
+font-size:1.0em;
+border:1px solid #98bf21;
+padding:3px 7px 2px 7px;
+}
+#shoplist tr:nth-child(even) {
+  background-image: -moz-linear-gradient(left, #EAF2D3 0%, #DDDDDD 100%);
+}
 #main {
 	margin: 0 0 10px;
 }
