@@ -27,25 +27,33 @@ tr {
   box-shadow: 10px 10px 5px #888888;
   border: solid black 2px;
   border-radius: 5px;
-  border-collapse: collapse;
   border-spacing: 1;
   background-image: -moz-linear-gradient(left, #FAFAFA 0%, #DDDDDD 100%);
 }
 #shoplist th {
-font-size:1.4em;
+font-size:1.2em;
 text-align:left;
 padding-top:5px;
 padding-bottom:4px;
 background-color:#A7C942;
 color:#fff;
 }
+.acmemarkets {
+background-color:#A4C8C8;
+}
+.thefreshgrocer {
+background-color:#FFE4C4;
+}
+.pathmark {
+background-color:#FFE4D4;
+}
+.superfresh {
+background-color:#8FBC8F;
+}
 #shoplist td {
-font-size:1.0em;
+font-size:.8em;
 border:1px solid #98bf21;
 padding:3px 7px 2px 7px;
-}
-#shoplist tr:nth-child(even) {
-  background-image: -moz-linear-gradient(left, #EAF2D3 0%, #DDDDDD 100%);
 }
 #main {
 	margin: 0 0 10px;
