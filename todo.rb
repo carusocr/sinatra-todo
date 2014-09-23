@@ -30,10 +30,11 @@ displayed:
 Click on a task's text to edit it.
 
 Future features:
-1. Add ability to shift position of items in list
-2. Consolidate activate and complete code into one 'update' method?
-3. Add some sort of 'random notes and ideas' section.
-4. Add ability to move task to different day.
+* Move repeater option to edit window, then add daily/weekly/otherday options
+* Add ability to shift position of items in list
+* Consolidate activate and complete code into one 'update' method?
+* Add some sort of 'random notes and ideas' section.
+* Add ability to move task to different day.
 
 Encountered bug where active items follow when I switch days...was going to fix this but I kind of like the constant reminder of what I'm supposed to be working on while I plan ahead.
 
@@ -74,6 +75,9 @@ def check_repeaters()
 	#pay rent first of month
 	if Date.today.day == 1
 		Note.first_or_create(:content=>"RENT",:created_at=>Date.today)
+	end
+	if Date.today.day % 2 == 0
+		Note.first_or_create(:content=>"Clean Litter Box",:created_at=>Date.today)
 	end
 	Note.all(:repeater => true).each do |rep|
 		if rep.created_at.cwday == Date.today.cwday && rep.complete == true && rep.created_at != Date.today
