@@ -57,11 +57,11 @@ class Note
 	property :id, Serial
 	property :content, Text, :required=>true
 	property :comment, Text
-	property :status, Enum[ :new, :doing, :done, :slack, :ohshit], :default=> :new
+	property :status, Enum[ :new, :doing, :done, :slack, :overdue], :default=> :new
 	property :created_at, Date
 	property :updated_at, DateTime
 	property :completed_at, DateTime
-	property :duration, Float, :default => 0
+	property :duration, Integer, :default => 0
 	property :priority, Boolean, :default => false
 	property :complete, Boolean, :default => false
 	property :active, Boolean, :default => false
@@ -140,13 +140,12 @@ end
 
 #call this when script launches if there's a repeater task that falls on that DOW
 def task_create(content, repeater)
-	n = Note.new
-	n.content = params[content]
-	n.repeater = params[repeater]
-	n.created_at = $curday
-	n.updated_at = Time.now
+	n = Note.new(:content => params[content],
+                :repeater => params[repeater],
+                :created_at => $curday,
+                :updated_at => Time.now
+              )
 	n.save
-#	redirect '/'
 end
 
 get '/:id' do
@@ -209,7 +208,7 @@ get '/:id/activate' do
 		else
 			n.duration = duration["#{n}"] + n.duration
 		end
-	elsif (n.status == :new || n.status == :ohshit) && $curday == Date.today
+	elsif (n.status == :new || n.status == :overdue) && $curday == Date.today
 		n.status = :doing
 		n.active = true
 	end
