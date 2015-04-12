@@ -92,10 +92,10 @@ article:first-of-type {
 	border: 1px solid #323232;
 }
 article:nth-child(even) {
-  background-image: linear-gradient(left, #FAFAFA 0%, #DDDDDD 100%);
+  background-image: linear-gradient(to left, #FAFAFA 0%, #DDDDDD 100%);
 }
 article.doing {
-  background-image: linear-gradient(left, #008812 0%, #007004 100%);
+  background-image: linear-gradient(to left, #008812 0%, #007004 100%);
 	color: #111;
 }
 article.done {
