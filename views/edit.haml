@@ -6,8 +6,9 @@
         %textarea{:name => "#{field}", :cols => "60", :rows => "6", :autofocus => true}= @note.content
       - else
         %textarea{:name => "#{field}", :cols => "40", :rows => "4", :autofocus => true}= @note.comment
-      %input{:type => "submit", :value => "Update"}
-    %form{:action => "/", :method => "post"}
-      %input{:type => "submit", :value => "Cancel"}
+    %br
+    %input{:type => "submit", :value => "Update"}
+  %form{:action => "/", :method => "get"}
+    %input{:type => "submit", :value => "Cancel"}
 - else
   %p Note not found!
