@@ -1,5 +1,9 @@
 %html
   %head
+    :javascript
+      $(document).ready(function() {
+        $('li').sortable();
+      });
     %meta{:charset => "utf8"}
       %title= @title + ' Recall '
       %link{:href => "/reset.css", :rel => "stylesheet"}
