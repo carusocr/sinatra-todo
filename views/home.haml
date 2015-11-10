@@ -2,7 +2,7 @@
   %head
   %script{:type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"}
   %script{:type => "text/javascript", :src => "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js" }
-  %link{:href => "datepicker.css", :rel => "stylesheet"}
+  %link{:rel => "stylesheet", :type => "text/css", :href => "datepicker.css"}
     :javascript
       $(function() {
         $("#datepicker").datepicker();
@@ -21,6 +21,11 @@
           %a{:href => "/prevday"} &#8668
           %a{:href => "/present"} &#9784
           %a{:href => "/nextday"} &#8669
+        %h4
+          %p
+            %form{:action => "/datejump", :method => "post"}
+              %input#datepicker{:type => "text", :name => "newdate"}
+              %input{:type => "submit", :value => "Jump to Date!", :id => "date_input"}
 - if Date.today <= $curday
   %section#new_note
     %form{:action => "/", :method => "post"}
@@ -61,6 +66,3 @@
 %a{:href => "/table", :id => "shop"}
   %button
     Shopping List
-%p
-  Date:
-  %input#datepicker{:type => "text"}

@@ -57,7 +57,7 @@ class Note
 	property :id, Serial
 	property :content, Text, :required=>true
 	property :comment, Text
-	property :status, Enum[ :new, :doing, :done, :slack, :overdue], :default=> :new
+	property :status, Enum[ :new, :doing, :done, :slack, :overdue ], :default=> :new
 	property :created_at, Date
 	property :updated_at, DateTime
 	property :completed_at, DateTime
@@ -111,6 +111,12 @@ get '/prevday' do
 	$curday = $curday - 1.day
 	redirect '/'
 end
+
+post '/datejump' do
+	$curday = Date.strptime("#{params[:newdate]}", '%m/%d/%Y') #fix date format
+	redirect '/'
+end
+
 get '/table' do
   haml :table
 end
