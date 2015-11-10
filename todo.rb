@@ -111,6 +111,12 @@ get '/prevday' do
 	$curday = $curday - 1.day
 	redirect '/'
 end
+
+post '/datejump' do
+	$curday = Date.strptime("#{params[:newdate]}", '%m/%d/%Y') #fix date format
+	redirect '/'
+end
+
 get '/table' do
   haml :table
 end

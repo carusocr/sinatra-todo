@@ -23,8 +23,9 @@
           %a{:href => "/nextday"} &#8669
         %h4
           %p
-            Jump to date:
-            %input#datepicker{:type => "text"}
+            %form{:action => "/datejump", :method => "post"}
+              %input#datepicker{:type => "text", :name => "newdate"}
+              %input{:type => "submit", :value => "Jump to Date!", :id => "date_input"}
 - if Date.today <= $curday
   %section#new_note
     %form{:action => "/", :method => "post"}
