@@ -24,8 +24,11 @@ The ⇜ ☸ ⇝ icons below the title will navigate to previous day, current day
 The weird icons inside the task items:
 
 ↯   Start a task. This will mark the task as 'active' and begin tracking how much time I spend on this task. If I toggle this, it will stop timing and add those minutes to any additional ones if I click it to continue working on it. To be honest, I don't use this feature much now that I'm using Pomodoro.
+
 ↭   Mark task as procrastinated. This turns the task yellow and brings up a textbox for me to enter a reason why I didn't complete the task. This text gets displayed inside of the task section.
+
 ▣   Mark task as finished. This will turn the task aqua, add a text line showing how many minutes I spent working on it, and display a new ellipsis icon. Clicking this will bring up a text box that lets me enter any additional notes/thoughts about the task. This task will be displayed inside the completed task  section.
+
 ☢   Destroy task. This also deletes the task record in the SQLite database.
 
 The 'Repeater' button simply recreates a particular task daily. Repeater tasks are shown in mint green. 
