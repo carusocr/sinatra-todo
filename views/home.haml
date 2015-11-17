@@ -2,7 +2,7 @@
   %head
   %script{:type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"}
   %script{:type => "text/javascript", :src => "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js" }
-  %link{:rel => "stylesheet", :type => "text/css", :href => "datepicker.css"}
+  %link{:href => "datepicker.css", :rel => "stylesheet"}
     :javascript
       $(function() {
         $("#datepicker").datepicker();
@@ -10,7 +10,7 @@
     %meta{:charset => "utf8"}
       %title= @title + ' Recall '
       %link{:href => "/reset.css", :rel => "stylesheet"}
-        %link{:href => "style.css", :rel => "stylesheet"}
+      %link{:href => "style.css", :rel => "stylesheet"}
   %body
     %header
       %hgroup
@@ -25,6 +25,7 @@
           %p
             %form{:action => "/datejump", :method => "post"}
               %input#datepicker{:type => "text", :name => "newdate"}
+              = "&nbsp&nbsp&nbsp".html_safe
               %input{:type => "submit", :value => "Jump to Date!", :id => "date_input"}
 - if Date.today <= $curday
   %section#new_note
@@ -64,5 +65,5 @@
 %br
 %br
 %a{:href => "/table", :id => "shop"}
-  %button
+  %button#note_input
     Shopping List
