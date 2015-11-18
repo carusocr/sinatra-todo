@@ -113,8 +113,11 @@ get '/prevday' do
 end
 
 post '/datejump' do
-	$curday = Date.strptime("#{params[:newdate]}", '%m/%d/%Y') #fix date format
-	redirect '/'
+	if params[:newdate] == ''
+	else
+		$curday = Date.strptime("#{params[:newdate]}", '%m/%d/%Y') #fix date format
+		redirect '/'
+	end
 end
 
 get '/table' do

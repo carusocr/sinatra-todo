@@ -7,6 +7,11 @@
       $(function() {
         $("#datepicker").datepicker();
       });
+      $(function() {
+        $("#dp").change(function(){
+          $("#dp").submit();
+        });
+      });
     %meta{:charset => "utf8"}
       %title= @title + ' Recall '
       %link{:href => "/reset.css", :rel => "stylesheet"}
@@ -23,8 +28,8 @@
           %a{:href => "/nextday"} &#8669
         %h4
           %p
-            %form{:action => "/datejump", :method => "post"}
-              %input#datepicker{:type => "text", :name => "newdate"}
+            %form{:action => "/datejump", :method => "post", :id => "dp"}
+              %input#datepicker{:type => "text", :name => "newdate", :value => "Jump to Date!"}
               = "&nbsp&nbsp&nbsp".html_safe
               %input{:type => "submit", :value => "Jump to Date!", :id => "date_input"}
 - if Date.today <= $curday
