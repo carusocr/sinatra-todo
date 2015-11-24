@@ -30,8 +30,6 @@
           %p
             %form{:action => "/datejump", :method => "post", :id => "dp"}
               %input#datepicker{:type => "text", :name => "newdate", :value => "Jump to Date!"}
-              = "&nbsp&nbsp&nbsp".html_safe
-              %input{:type => "submit", :value => "Jump to Date!", :id => "date_input"}
 - if Date.today <= $curday
   %section#new_note
     %form{:action => "/", :method => "post"}
