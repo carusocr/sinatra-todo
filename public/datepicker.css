@@ -1,8 +1,8 @@
 .ui-datepicker {
   background-color: #ccc;
   border: 1px solid #66AFE9;
-  border-radius: 4px;
-  box-shadow: 0 0 8px rgba(102,175,233,.6);
+  border-radius: 5px;
+  box-shadow: 5px 5px 2px #888888;
   display: none;
   margin-top: 4px;
   padding: 10px;

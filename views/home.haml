@@ -11,6 +11,12 @@
         $("#dp").change(function(){
           $("#dp").submit();
         });
+        $('#note_entry').keypress(function (e) {
+          if (e.which == 13) {
+            jQuery(this).blur();
+            jQuery("#note_input").focus().click();
+          }
+        });
       });
     %meta{:charset => "utf8"}
       %title= @title + ' Recall '
