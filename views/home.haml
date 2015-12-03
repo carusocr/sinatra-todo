@@ -11,10 +11,14 @@
         $("#dp").change(function(){
           $("#dp").submit();
         });
-        $('#note_entry').keypress(function (e) {
+        $('#note_entry').keydown(function (e) {
           if (e.which == 13) {
             jQuery(this).blur();
             jQuery("#note_input").focus().click();
+          }
+          if (e.which == 27) {
+            e.preventDefault();
+            $("#note_entry").val("");
           }
         });
       });
