@@ -55,6 +55,7 @@
     %article{:class => "#{note.status}"}
       - if !note.complete
         %a.content{:href => "/#{note.id}"}= note.content
+        -#%a.content{:id => "note_content"}= note.content #trying to get clickable edits
       - else
         = note.content
       = note.created_at if (note.status == :overdue || note.active == true || note.created_at != note.completed_at) && $curday != note.created_at
