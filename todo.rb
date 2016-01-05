@@ -45,6 +45,10 @@ require 'data_mapper'
 require 'haml'
 require 'active_support/all'
 
+set :server, 'thin'
+# testing this...my biggest gripe with this app is the slow response for what is such a simple thing
+# http://stackoverflow.com/questions/2130322/why-is-my-sinatra-website-so-slow <--investigate
+
 $curday = Date.today
 
 duration = Hash.new
