@@ -48,7 +48,7 @@
       %input{:type => "checkbox", :name => "repeater", :value => "1"} Repeater
       %input{:type => "submit", :value => "Take Note!", :id => "note_input"}
   %br
-- @notes.each do |note| 
+- @notes.reverse_each do |note| 
   - note.status = :overdue if note.created_at < Date.today && note.status == :new
   - note.status = :repeater if note.repeater == true && note.status == :new
   - if note.created_at == $curday || note.status == :overdue && note.created_at < $curday && $curday == Date.today || note.completed_at == $curday || note.status == :doing
