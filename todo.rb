@@ -49,6 +49,7 @@ duration = Hash.new
 
 #database setup
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/recall.db")
+$curday = Date.today
 
 class Note
 	include DataMapper::Resource
@@ -57,6 +58,8 @@ class Note
 	property :comment, Text
 	property :status, Enum[ :new, :doing, :done, :slack, :overdue ], :default=> :new
 	property :created_at, Date
+	#adding task date
+	#property :task_date, Date
 	property :updated_at, DateTime
 	property :completed_at, DateTime
 	property :duration, Integer, :default => 0
@@ -90,7 +93,7 @@ end
 
 get '/' do
 	check_repeaters()
-  @notes = Note.all :order=>:id.desc
+  	@notes = Note.all :order=>:id.desc
 	@title = ' - CRC - '
 	haml :home, :locals => {:curday => $curday}
 end
@@ -150,6 +153,7 @@ def task_create(content, repeater)
 	n = Note.new(:content => params[content],
                 :repeater => params[repeater],
                 :created_at => $curday,
+                #:created_at => Date.today,
                 :updated_at => Time.now
               )
 	n.save
