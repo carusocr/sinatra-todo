@@ -55,7 +55,8 @@
     %article{:class => "#{note.status}"}
       - if !note.complete
         %a.content{:href => "/#{note.id}"}= note.content
-        = note.created_at if (($curday - note.created_at).to_i > 3)
+        - if note.task_date
+          = note.task_date if (($curday - note.task_date).to_i > 3)
       - else
         = note.content
       = note.created_at if (note.status == :overdue || note.active == true || note.created_at != note.completed_at) && $curday != note.created_at
