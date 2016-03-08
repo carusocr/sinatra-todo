@@ -76,9 +76,6 @@ def check_repeaters()
 	if Date.today.day == 1
 		Note.first_or_create(:content=>"RENT",:created_at=>Date.today)
 	end
-	if Date.today.day % 2 == 0
-		Note.first_or_create(:content=>"Clean Litter Box",:created_at=>Date.today)
-	end
 	Note.all(:repeater => true).each do |rep|
 		if rep.created_at.cwday == Date.today.cwday && rep.complete == true && rep.created_at != Date.today
 			#switch off repeater for old one
