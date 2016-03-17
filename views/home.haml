@@ -55,7 +55,7 @@
     %article{:class => "#{note.status}"}
       - if !note.complete
         %a.content{:href => "/#{note.id}"}= note.content
-        - if note.task_date
+        - if note.task_date && note.repeater == false
           = note.task_date if (($curday - note.task_date).to_i > 3)
       - else
         = note.content
