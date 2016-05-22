@@ -87,9 +87,13 @@ def check_repeaters()
 	end
 end
 
+# notes are slow since db is getting bigger...why reload entire table on get '/'?
+# change this so that it only loads current day
+
 get '/' do
 	check_repeaters()
-  	@notes = Note.all :order=>:id.desc
+	#workaround for slowness...clean this up!
+ 	@notes = Note.all(:created_at.gt => '2016-01-01')
 	@title = ' - CRC - '
 	haml :home, :locals => {:curday => $curday}
 end
