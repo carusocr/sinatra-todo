@@ -92,8 +92,7 @@ end
 
 get '/' do
 	check_repeaters()
-	#workaround for slowness...clean this up!
- 	@notes = Note.all(:created_at.gt => '2016-01-01')
+ 	@notes = Note.all(:created_at => $curday) | Note.all(:created_at.lt => Date.today, :status => :new) | Note.all(:completed_at => $curday) | Note.all(:status => :doing)
 	@title = ' - CRC - '
 	haml :home, :locals => {:curday => $curday}
 end
