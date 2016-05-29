@@ -92,7 +92,8 @@ end
 
 get '/' do
 	check_repeaters()
- 	@notes = Note.all(:created_at => $curday) | Note.all(:created_at.lt => Date.today, :status => :new) | Note.all(:completed_at => $curday) | Note.all(:status => :doing)
+ 	notes = Note.all(:created_at => $curday) | Note.all(:created_at.lt => Date.today, :status => :new) | Note.all(:completed_at => $curday) | Note.all(:status => :doing)
+	@notes = notes.reverse
 	@title = ' - CRC - '
 	haml :home, :locals => {:curday => $curday}
 end
