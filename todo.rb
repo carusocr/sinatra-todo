@@ -68,7 +68,6 @@ class Note
 	property :repeater, Boolean, :default => false
 end
 
-
 DataMapper.finalize.auto_upgrade!
 
 def check_repeaters()
@@ -93,7 +92,7 @@ end
 get '/' do
 	check_repeaters()
  	notes = Note.all(:created_at => $curday) | Note.all(:created_at.lt => Date.today, :status => :new) | Note.all(:completed_at => $curday) | Note.all(:status => :doing)
-	@notes = notes.reverse
+	@notes = notes.all(:order => [:complete]).reverse
 	@title = ' - CRC - '
 	haml :home, :locals => {:curday => $curday}
 end
