@@ -73,7 +73,7 @@ DataMapper.finalize.auto_upgrade!
 def check_repeaters()
 	#pay rent first of month
 	if Date.today.day == 25
-		Note.first_or_create(:content=>"MORTGAGE",:created_at=>Date.today)
+		#Note.first_or_create(:content=>"MORTGAGE",:created_at=>Date.today)
 	end
 	Note.all(:repeater => true).each do |rep|
 		if rep.created_at.cwday == Date.today.cwday && rep.complete == true && rep.created_at != Date.today
